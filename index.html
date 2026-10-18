@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深圳红色党建研学平台</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft YaHei", "SimHei", sans-serif;
+}
+body {
+    background-color: #f8f4f0;
+    background-image: none;
+    color: #333;
+    line-height: 1.7;
+}
+/* ========== 顶部导航 党建红 ========== */
+.top-nav{
+    background:#a8071a;
+    color:#fff;
+    padding:12px 15px;
+    text-align:center;
+}
+.top-nav h1{
+    font-size:20px;
+    font-weight:bold;
+}
+.top-nav p{
+    font-size:13px;
+    opacity:0.85;
+}
+/* 首页Banner */
+.banner{
+    background:linear-gradient(rgba(168,7,26,0.8),rgba(168,7,26,0.85)), #b80000;
+    color:#fff;
+    padding:35px 20px;
+    text-align:center;
+}
+.banner h2{
+    font-size:24px;
+    margin-bottom:8px;
+}
+.banner-text{
+    font-size:15px;
+    max-width:650px;
+    margin:0 auto;
+    opacity:0.92;
+}
+.container {
+    max-width:760px;
+    margin:0 auto;
+    padding:18px 15px;
+}
+.section-title{
+    font-size:19px;
+    font-weight:bold;
+    border-left:5px solid #a8071a;
+    padding-left:10px;
+    margin:10px 0 18px;
+}
+/* 搜索框 */
+.search-box{
+    margin-bottom:20px;
+}
+#searchInput{
+    width:100%;
+    padding:12px 16px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font-size:15px;
+}
+.no-tip{
+    text-align:center;
+    color:#888;
+    font-size:15px;
+    padding:30px 0;
+    display:none;
+}
+/* 路线卡片样式 */
+.route-card {
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.09);
+    overflow:hidden;
+    margin-bottom:20px;
+    transition: 0.3s ease;
+}
+/* 卡片悬浮上浮美化效果 */
+.route-card:hover{
+    transform: translateY(-4px);
+    box-shadow:0 4px 16px rgba(0,0,0,0.12);
+}
+.card-inner{
+    padding:18px;
+}
+.card-tag-group{
+    display:flex;
+    gap:8px;
+    margin-bottom:10px;
+}
+.tag-area{
+    background:#a8071a;
+    color:#fff;
+    font-size:12px;
+    padding:3px 9px;
+    border-radius:3px;
+}
+.tag-theme{
+    background:#234b8c;
+    color:#fff;
+    font-size:12px;
+    padding:3px 9px;
+    border-radius:3px;
+}
+.route-title {
+    font-size:18px;
+    font-weight:bold;
+    color:#222;
+    margin-bottom:10px;
+}
+.route-desc {
+    font-size:14px;
+    color:#555;
+}
+.card-btn-wrap{
+    margin-top:16px;
+    text-align:right;
+}
+.open-btn{
+    background:#a8071a;
+    color:#fff;
+    border:none;
+    padding:9px 18px;
+    border-radius:6px;
+    font-size:14px;
+    cursor: pointer;
+    transition:0.2s;
+}
+.open-btn:hover{
+    background:#8c0615;
+}
+/* ========== 研学点位卡片 + 修复图片变形【重点】 ========== */
+.point-box {
+    background:#ffffff;
+    border-radius:10px;
+    padding:16px;
+    margin-bottom:14px;
+    border-left:4px solid #a8071a;
+}
+.point-title{
+    font-weight:bold;
+    font-size:16px;
+    color:#a8071a;
+    margin-bottom:6px;
+}
+.point-img{
+    width:100%;
+    height:160px;
+    background:#ffffff;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#777;
+    margin:8px 0 10px;
+    overflow:hidden; /* 图片超出容器自动隐藏，防止溢出 */
+}
+/* 图片全局样式，解决拉伸变形 */
+.point-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover; /* 保持原图比例，不会压扁拉伸 */
+}
+.tip-box{
+    background:#fff2f2;
+    border:1px solid #f8cccc;
+    border-radius:10px;
+    padding:16px;
+    margin-top:22px;
+}
+.tip-box h4{
+    color:#a8071a;
+    margin-bottom:8px;
+}
+/* 页面切换 */
+.page{
+    display:none;
+}
+.page.active{
+    display:block;
+}
+.back-btn{
+    border:none;
+    background:#eee;
+    padding:8px 14px;
+    border-radius:6px;
+    font-size:14px;
+    cursor:pointer;
+    transition:0.2s;
+}
+.back-btn:hover{
+    background:#dddddd;
+}
+/* 页脚 */
+footer{
+    background:#222;
+    color:#ccc;
+    text-align:center;
+    padding:20px;
+    font-size:13px;
+    margin-top:30px;
+}
+/* 图片放大弹窗样式 */
+.img-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.85);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+}
+.img-modal.active {
+    display: flex;
+}
+.img-modal img{
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 6px;
+}
+.img-close{
+    position: absolute;
+    top:20px;
+    right:30px;
+    color:white;
+    font-size:40px;
+    cursor:pointer;
+}
+img{
+    max-width: 100%;
+    height: auto;
+}
+/* 手机屏幕适配，宽度小于768px生效 */
+@media (max-width: 768px) {
+    body {
+        padding: 0 10px;
+        overflow-x: hidden;
+    }
+    /* 研学路线卡片 手机占满整行 */
+    .route-card {
+        width: 100% !important;
+    }
+    /* 图片容器缩小一点，手机更美观 */
+    .point-img {
+        min-height: 140px;
+    }
+    /* 标题字号手机缩小 */
+    h1 {
+        font-size: 22px;
+    }
+    h2 {
+        font-size: 18px;
+    }
+    p {
+        font-size: 15px;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <div class="top-nav">
+        <h1>深圳红色党建研学平台</h1>
+        <p>赓续红色血脉 传承特区精神</p>
+    </div>
+
+    <!-- 首页Banner（携程大图宣传风格） -->
+    <div id="homeBanner" class="banner">
+        <h2>红色研学精品线路推荐</h2>
+        <div class="banner-text">
+            追寻深圳红色足迹，感悟百年奋斗历程，学习特区开拓精神，开展主题党日、红色教育研学实践。
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 首页 -->
+        <div id="home" class="page active">
+            <!-- 搜索框 -->
+            <div class="search-box">
+                <input id="searchInput" type="text" placeholder="🔍 搜索研学路线（区域/主题/名称）">
+            </div>
+            <div class="section-title">精品研学路线</div>
+            <div id="routeList">
+                <!--路线1-->
+                <div class="route-card" data-key="福田 改革开放再出发线 改革开放主题">
+                    <div class="card-inner">
+                        <div class="card-tag-group">
+                            <span class="tag-area">福田</span>
+                            <span class="tag-theme">改革开放主题</span>
+                        </div>
+                        <div class="route-title">改革开放再出发线</div>
+                        <div class="route-desc">
+                            沿着深圳改革开放发展足迹，探访莲花山公园、大潮起珠江展览馆、深圳党史馆、深中大桥。感悟敢闯敢试、敢为人先、埋头苦干的特区精神，见证深圳伟大变革。
+                        </div>
+                        <div class="card-btn-wrap">
+                            <button class="open-btn" onclick="showPage(1)">查看路线详情</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!--路线2-->
+                <div class="route-card" data-key="坪山 大鹏 东纵峥嵘抗战线 抗战革命史">
+                    <div class="card-inner">
+                        <div class="card-tag-group">
+                            <span class="tag-area">坪山-大鹏</span>
+                            <span class="tag-theme">抗战革命史</span>
+                        </div>
+                        <div class="route-title">东纵峥嵘抗战线</div>
+                        <div class="route-desc">
+                            东江纵队纪念馆→前进报社旧址→土洋村东纵司令部旧址→沙鱼涌北撤纪念公园，重温华南敌后艰苦卓绝的抗战斗争历史。
+                        </div>
+                        <div class="card-btn-wrap">
+                            <button class="open-btn" onclick="showPage(2)">查看路线详情</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!--路线3-->
+                <div class="route-card" data-key="龙华 文化营救统战线 统一战线">
+                    <div class="card-inner">
+                        <div class="card-tag-group">
+                            <span class="tag-area">龙华</span>
+                            <span class="tag-theme">统一战线</span>
+                        </div>
+                        <div class="route-title">文化营救统战线</div>
+                        <div class="route-desc">
+                            白石龙文化名人大营救纪念馆→阳台山森林公园。追寻文化名人大营救壮举，感悟统一战线力量，守护民族文化根脉。
+                        </div>
+                        <div class="card-btn-wrap">
+                            <button class="open-btn" onclick="showPage(3)">查看路线详情</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!--路线4-->
+                <div class="route-card" data-key="宝安 宝安星火溯源线 党史溯源">
+                    <div class="card-inner">
+                        <div class="card-tag-group">
+                            <span class="tag-area">宝安</span>
+                            <span class="tag-theme">党史溯源</span>
+                        </div>
+                        <div class="route-title">宝安星火溯源线</div>
+                        <div class="route-desc">
+                            中共宝安县一大纪念馆→东宝行政督导处旧址，追溯深圳党组织诞生历程，学习早期农民运动，探寻深圳红色星火起源。
+                        </div>
+                        <div class="card-btn-wrap">
+                            <button class="open-btn" onclick="showPage(4)">查看路线详情</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!--路线5-->
+                <div class="route-card" data-key="罗湖 特区奋斗蜕变线 特区初创">
+                    <div class="card-inner">
+                        <div class="card-tag-group">
+                            <span class="tag-area">罗湖</span>
+                            <span class="tag-theme">特区初创</span>
+                        </div>
+                        <div class="route-title">特区奋斗蜕变线</div>
+                        <div class="route-desc">
+                            渔民村→国贸大厦→东江游击队指挥部旧址，回顾特区初创奋斗历程，感悟“深圳速度”，学习白手起家的开拓精神。
+                        </div>
+                        <div class="card-btn-wrap">
+                            <button class="open-btn" onclick="showPage(5)">查看路线详情</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!--路线6-->
+                <div class="route-card" data-key="全域 英烈精神传承缅怀线 英烈缅怀">
+                    <div class="card-inner">
+                        <div class="card-tag-group">
+                            <span class="tag-area">全域</span>
+                            <span class="tag-theme">英烈缅怀</span>
+                        </div>
+                        <div class="route-title">英烈精神传承缅怀线</div>
+                        <div class="route-desc">
+                            深圳革命烈士陵园及各辖区烈士纪念点位。缅怀革命先烈，淬炼初心使命，传承无私奉献的崇高革命精神。
+                        </div>
+                        <div class="card-btn-wrap">
+                            <button class="open-btn" onclick="showPage(6)">查看路线详情</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!--路线7-->
+                <div class="route-card" data-key="前海 南山 改革开放样板科创向未来研学线 科创现代化">
+                    <div class="card-inner">
+                        <div class="card-tag-group">
+                            <span class="tag-area">前海·南山</span>
+                            <span class="tag-theme">科创现代化</span>
+                        </div>
+                        <div class="route-title">改革开放样板•科创向未来研学线</div>
+                        <div class="route-desc">
+                            前海石公园→当代艺术与城市规划馆→南山科创园区党建展厅→深圳科技馆新馆。解码深圳样板，感悟科技自立自强，展望中国式现代化图景。
+                        </div>
+                        <div class="card-btn-wrap">
+                            <button class="open-btn" onclick="showPage(7)">查看路线详情</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="emptyTip" class="no-tip">暂无匹配研学路线</div>
+        </div>
+
+        <!--路线1详情页-->
+        <div id="page1" class="page">
+            <div class="back-wrap">
+                <button class="back-btn" onclick="backHome()">← 返回首页</button>
+            </div>
+            <div class="route-card">
+                <div class="card-inner">
+                    <div class="card-tag-group">
+                        <span class="tag-area">福田</span>
+                        <span class="tag-theme">改革开放主题</span>
+                    </div>
+                    <div class="route-title">改革开放再出发线</div>
+                    <div class="route-desc">
+                        沿着深圳改革开放发展足迹，探访红色地标，感悟敢闯敢试、敢为人先、埋头苦干的特区精神。重走改革开放之路，感悟深圳从边陲小镇到国际化大都市的伟大变革。
+                    </div>
+                </div>
+            </div>
+            <div class="section-title">📍研学点位</div>
+            <div class="point-box">
+                <div class="point-title">① 莲花山公园</div>
+                <div class="point-img"><img src="lianhua.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>深圳标志性红色地标、改革开放精神象征地。登高俯瞰深圳全景，缅怀伟人开拓精神，感悟改革开放宏伟蓝图。</p>
+            </div>
+            <div class="point-box">
+                <div class="point-title">② 大潮起珠江改革开放展览馆</div>
+                <div class="point-img"><img src="dachao.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>全面展示广东、深圳四十年改革开放壮阔历程，通过实物、影像、史料再现特区崛起奇迹。</p>
+            </div>
+            <div class="point-box">
+                <div class="point-title">③ 深圳党史馆</div>
+                <div class="point-img"><img src="dangshi.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>系统梳理深圳百年党史脉络，展示深圳从革命、建设、改革到新时代的完整奋斗历程。</p>
+            </div>
+            <div class="point-box">
+                <div class="point-title">④ 深中大桥</div>
+                <div class="point-img"><img src="daqiao.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>世界级超级工程，代表大湾区新时代建设成就，象征改革开放持续深化、湾区融合发展新格局。</p>
+            </div>
+            <div class="tip-box">
+                <h4>📌研学提示</h4>
+                <p><strong>研学主题：</strong>敢闯敢试、改革开放再出发<br>
+                <strong>学习重点：</strong>特区精神、改革开放历程、粤港澳大湾区建设<br>
+                <strong>预约提醒：</strong>大潮起珠江展览馆、深圳党史馆需要提前线上预约。</p>
+            </div>
+        </div>
+
+        <!--路线2详情页-->
+        <div id="page2" class="page">
+            <div class="back-wrap">
+                <button class="back-btn" onclick="backHome()">← 返回首页</button>
+            </div>
+            <div class="route-card">
+                <div class="card-inner">
+                    <div class="card-tag-group">
+                        <span class="tag-area">坪山-大鹏</span>
+                        <span class="tag-theme">抗战革命史</span>
+                    </div>
+                    <div class="route-title">东纵峥嵘抗战线</div>
+                    <div class="route-desc">
+                        重温东江纵队在华南敌后艰苦卓绝的抗战历史，走访多处东纵核心旧址，体悟革命队伍不畏强敌、浴血坚守的红色斗争精神。
+                    </div>
+                </div>
+            </div>
+            <div class="section-title">📍研学点位</div>
+            <div class="point-box">
+                <div class="point-title">① 东江纵队纪念馆</div>
+                <div class="point-img"><img src="jiangdong.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>全面展示东江纵队发展历史、重要战役、英雄事迹，是华南抗战最重要红色教育基地。</p>
+            </div>
+            <div class="point-box">
+                <div class="point-title">② 前进报社旧址</div>
+                <div class="point-img"><img src="baoshe.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>东纵战时宣传阵地，在艰苦环境中传播抗日思想、凝聚民心，见证红色舆论战线力量。</p>
+            </div>
+            <div class="point-box">
+                <div class="point-title">③ 土洋村东纵司令部旧址</div>
+                <div class="point-img"><img src="tuyang.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>东江纵队曾经的指挥核心，是华南敌后抗日斗争重要指挥中枢。</p>
+            </div>
+            <div class="point-box">
+                <div class="point-title">④ 沙鱼涌北撤纪念公园</div>
+                <div class="point-img"><img src="shayu.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>记录东纵主力北撤历史，见证革命队伍顾全大局、严守纪律的崇高革命品格。</p>
+            </div>
+            <div class="tip-box">
+                <h4>📌研学提示</h4>
+                <p><strong>研学主题：</strong>华南敌后抗战，革命斗争史<br>
+                <strong>学习重点：</strong>东纵精神、艰苦奋斗、华南敌后抗日斗争历史</p>
+            </div>
+        </div>
+
+        <!--路线3详情页-->
+        <div id="page3" class="page">
+            <div class="back-wrap">
+                <button class="back-btn" onclick="backHome()">← 返回首页</button>
+            </div>
+            <div class="route-card">
+                <div class="card-inner">
+                    <div class="card-tag-group">
+                        <span class="tag-area">龙华</span>
+                        <span class="tag-theme">统一战线</span>
+                    </div>
+                    <div class="route-title">文化营救统战线</div>
+                    <div class="route-desc">
+                        追寻抗战时期震惊中外的“香港文化名人大营救”历史，感悟党的统一战线智慧与担当，体会共产党人守护中华文化命脉的初心。
+                    </div>
+                </div>
+            </div>
+            <div class="section-title">📍研学点位</div>
+            <div class="point-box">
+                <div class="point-title">① 白石龙文化名人大营救纪念馆</div>
+                <div class="point-img"><img src="baishi.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>完整记录1942年文化名人大营救全过程，展现中共地下党员、东江纵队冒着风险保护数百名文人志士的伟大壮举。</p>
+            </div>
+            <div class="point-box">
+                <div class="point-title">② 阳台山森林公园</div>
+                <div class="point-img"><img src="yangtai.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>当年大营救重要隐蔽、转移通道，山林间承载深厚红色记忆，适合红色徒步研学。</p>
+            </div>
+            <div class="tip-box">
+                <h4>📌研学提示</h4>
+                <p><strong>研学主题：</strong>统一战线、文化守护<br>
+                <strong>学习重点：</strong>统一战线思想、文化自信、红色守护精神</p>
+            </div>
+        </div>
+
+        <!--路线4详情页-->
+        <div id="page4" class="page">
+            <div class="back-wrap">
+                <button class="back-btn" onclick="backHome()">← 返回首页</button>
+            </div>
+            <div class="route-card">
+                <div class="card-inner">
+                    <div class="card-tag-group">
+                        <span class="tag-area">宝安</span>
+                        <span class="tag-theme">党史溯源</span>
+                    </div>
+                    <div class="route-title">宝安星火溯源线</div>
+                    <div class="route-desc">
+                        溯源深圳红色起点，探访深圳最早党组织诞生地，了解宝安早期革命、农民运动、红色星火燎原的奋斗历程。
+                    </div>
+                </div>
+            </div>
+            <div class="section-title">📍研学点位</div>
+            <div class="point-box">
+                <div class="point-title">① 中共宝安县一大纪念馆</div>
+                <div class="point-img"><img src="zhonggong.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>深圳党史源头，见证深圳第一个县级党组织诞生，是深圳红色星火的发源地。</p>
+            </div>
+            <div class="point-box">
+                <div class="point-title">② 东宝行政督导处旧址</div>
+                <div class="point-img"><img src="dongbao.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>东江地区重要红色政权旧址，见证共产党在东江地区建政、为民、奋斗的早期革命实践。</p>
+            </div>
+            <div class="tip-box">
+                <h4>📌研学提示</h4>
+                <p><strong>研学主题：</strong>深圳党组织诞生与早期农民运动<br>
+                <strong>学习重点：</strong>初心源头、红色根基、早期革命探索</p>
+            </div>
+        </div>
+
+        <!--路线5详情页-->
+        <div id="page5" class="page">
+            <div class="back-wrap">
+                <button class="back-btn" onclick="backHome()">← 返回首页</button>
+            </div>
+            <div class="route-card">
+                <div class="card-inner">
+                    <div class="card-tag-group">
+                        <span class="tag-area">罗湖</span>
+                        <span class="tag-theme">特区初创</span>
+                    </div>
+                    <div class="route-title">特区奋斗蜕变线</div>
+                    <div class="route-desc">
+                        走进深圳最早对外开放、最早建设发展的罗湖片区，重温特区从零起步、敢闯敢拼、艰苦创业的奋斗史诗。
+                    </div>
+                </div>
+            </div>
+            <div class="section-title">📍研学点位</div>
+            <div class="point-box">
+                <div class="point-title">① 渔民村</div>
+                <div class="point-img"><img src="yumin.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px">></div>
+                <p>中国改革开放第一村，见证深圳先行先试、共同富裕的最早探索。</p>
+            </div>
+            <div class="point-box">
+                <div class="point-title">② 国贸大厦</div>
+                <div class="point-img"><img src="guomao.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>“三天一层楼”的深圳速度发源地，是特区拼搏奋斗精神的标志性建筑。</p>
+            </div>
+            <div class="point-box">
+                <div class="point-title">③ 东江游击队指挥部旧址</div>
+                <div class="point-img"><img src="youji.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>承载深圳革命红色根基，串联起“革命历史—特区建设”的红色传承脉络。</p>
+            </div>
+            <div class="tip-box">
+                <h4>📌研学提示</h4>
+                <p><strong>研学主题：</strong>特区初创奋斗历程<br>
+                <strong>学习重点：</strong>开拓创新、实干担当、敢为人先的特区精神</p>
+            </div>
+        </div>
+
+        <!--路线6详情页-->
+        <div id="page6" class="page">
+            <div class="back-wrap">
+                <button class="back-btn" onclick="backHome()">← 返回首页</button>
+            </div>
+            <div class="route-card">
+                <div class="card-inner">
+                    <div class="card-tag-group">
+                        <span class="tag-area">全域</span>
+                        <span class="tag-theme">英烈缅怀</span>
+                    </div>
+                    <div class="route-title">英烈精神传承缅怀线</div>
+                    <div class="route-desc">
+                        立足深圳全域红色纪念阵地，缅怀为民族独立、人民解放、城市建设牺牲的革命先烈，淬炼初心、传承红色血脉。
+                    </div>
+                </div>
+            </div>
+            <div class="section-title">📍研学点位</div>
+            <div class="point-box">
+                <div class="point-title">深圳革命烈士陵园及各辖区烈士纪念点位</div>
+                <div class="point-img"><img src="lieshi.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>集中承载深圳百年英烈史，记录革命战争、抗日斗争、建设年代牺牲的英雄事迹，是全市最重要的红色思政教育阵地。</p>
+            </div>
+            <div class="tip-box">
+                <h4>📌研学提示</h4>
+                <p><strong>研学主题：</strong>缅怀先烈、初心淬炼<br>
+                <strong>学习重点：</strong>家国大义、无私奉献、红色精神代代传承</p>
+            </div>
+        </div>
+
+        <!--路线7详情页-->
+        <div id="page7" class="page">
+            <div class="back-wrap">
+                <button class="back-btn" onclick="backHome()">← 返回首页</button>
+            </div>
+            <div class="route-card">
+                <div class="card-inner">
+                    <div class="card-tag-group">
+                        <span class="tag-area">前海·南山</span>
+                        <span class="tag-theme">科创现代化</span>
+                    </div>
+                    <div class="route-title">改革开放样板•科创向未来研学线</div>
+                    <div class="route-desc">
+                        立足前海开放前沿、南山科创高地，从改革开放历史成就走向新时代科技自立自强，解码深圳发展样板，展望中国式现代化未来图景。
+                    </div>
+                </div>
+            </div>
+            <div class="section-title">📍研学点位</div>
+            <div class="point-box">
+                <div class="point-title">① 前海石公园</div>
+                <div class="point-img"><img src="qianhai.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>前海改革开放、新时代先行示范区精神地标，象征续写改革开放新篇章。</p>
+            </div>
+            <div class="point-box">
+                <div class="point-title">② 当代艺术与城市规划馆（大潮起珠江）</div>
+                <div class="point-img"><img src="yishu.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>展示深圳城市蜕变历程、改革开放辉煌成果。</p>
+            </div>
+            <div class="point-box">
+                <div class="point-title">③ 南山科创园区/高科技企业党建展厅</div>
+                <div class="point-img"><img src="nanshan.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>展现新时代科技党建、科创赋能发展、党员先锋引领创新的生动实践。</p>
+            </div>
+            <div class="point-box">
+                <div class="point-title">④ 深圳科技馆（新馆）</div>
+                <div class="point-img"><img src="keji.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>代表深圳科技自立自强、创新驱动发展的未来力量。</p>
+            </div>
+            <div class="tip-box">
+                <h4>📌研学提示</h4>
+                <p><strong>研学主题：</strong>解码深圳改革开放成功样板，科技自立自强，展望中国式现代化<br>
+                <strong>学习重点：</strong>创新精神、时代使命、青年担当</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚（党建官网/电视台底部版权栏） -->
+    <footer>
+        <p>深圳红色党建研学平台 | 红色教育研学线路展示</p>
+        <p style="margin-top:6px;">本网站为课程作业演示网站</p>
+    </footer>
+
+<script>
+    function showPage(num){
+        document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+        document.getElementById('page'+num).classList.add('active');
+    }
+    function backHome(){
+        document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+        document.getElementById('home').classList.add('active');
+    }
+    //搜索功能JS
+    const searchInput = document.getElementById('searchInput');
+    const routeCards = document.querySelectorAll('.route-card');
+    const emptyTip = document.getElementById('emptyTip');
+    searchInput.addEventListener('input',function(){
+        let keyword = this.value.trim().toLowerCase();
+        let count = 0;
+        routeCards.forEach(card=>{
+            let text = card.dataset.key.toLowerCase();
+            if(text.includes(keyword)){
+                card.style.display = "block";
+                count++;
+            }else{
+                card.style.display = "none";
+            }
+        })
+        if(count === 0){
+            emptyTip.style.display = "block";
+        }else{
+            emptyTip.style.display = "none";
+        }
+    })
+</script>
+<!-- 图片点击放大弹窗JS -->
+<script>
+// 获取弹窗元素
+const modal = document.createElement('div');
+modal.className = "img-modal";
+modal.innerHTML = `
+    <span class="img-close">&times;</span>
+    <img src="" id="modal-img">
+`;
+document.body.appendChild(modal);
+const modalImg = document.getElementById("modal-img");
+const closeBtn = document.querySelector(".img-close");
+
+// 给所有点位图片添加点击事件
+document.querySelectorAll(".point-img img").forEach(img=>{
+    img.style.cursor = "pointer"; //鼠标移上去变成小手，提示可点击
+    img.onclick = function(){
+        modalImg.src = this.src;
+        modal.classList.add("active");
+    }
+})
+//关闭弹窗
+function closeModal(){
+    modal.classList.remove("active");
+}
+closeBtn.onclick = closeModal;
+modal.onclick = function(e){
+    if(e.target === modal) closeModal();
+}
+</script>
+</body>
+</html>
