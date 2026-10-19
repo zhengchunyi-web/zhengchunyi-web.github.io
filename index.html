@@ -37,14 +37,15 @@ body {
 .nav-menu{
     display:flex;
     justify-content:center;
-    gap:12px;
+    gap:10px;
     margin-top:12px;
+    flex-wrap:wrap;
 }
 .nav-btn{
     background:rgba(255,255,255,0.14);
     color:#fff;
     border:1px solid rgba(255,255,255,0.35);
-    padding:6px 22px;
+    padding:6px 18px;
     border-radius:20px;
     font-size:14px;
     cursor:pointer;
@@ -85,7 +86,7 @@ body {
     font-weight:bold;
     border-left:5px solid #a8071a;
     padding-left:10px;
-    margin:10px 0 18px;
+    margin:24px 0 18px;
 }
 /* 搜索框 */
 .search-box{
@@ -114,7 +115,6 @@ body {
     margin-bottom:20px;
     transition: 0.3s ease;
 }
-/* 卡片悬浮上浮美化效果 */
 .route-card:hover{
     transform: translateY(-4px);
     box-shadow:0 4px 16px rgba(0,0,0,0.12);
@@ -126,6 +126,7 @@ body {
     display:flex;
     gap:8px;
     margin-bottom:10px;
+    flex-wrap:wrap;
 }
 .tag-area{
     background:#a8071a;
@@ -151,6 +152,42 @@ body {
     font-size:14px;
     color:#555;
 }
+/* 价格标签 */
+.price-banner{
+    background:linear-gradient(90deg,#fff5f5,#ffe8e8);
+    border:1px dashed #e0a0a0;
+    border-radius:8px;
+    padding:10px 14px;
+    margin:12px 0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+}
+.price-num{
+    color:#a8071a;
+    font-size:20px;
+    font-weight:bold;
+}
+.price-unit{
+    font-size:13px;
+    color:#888;
+    font-weight:normal;
+}
+.price-include{
+    font-size:13px;
+    color:#555;
+}
+.price-include span{
+    display:inline-block;
+    background:#fff;
+    border:1px solid #e0c0c0;
+    border-radius:10px;
+    padding:1px 8px;
+    margin:2px 2px 0 0;
+    font-size:12px;
+}
 .card-btn-wrap{
     margin-top:16px;
     text-align:right;
@@ -168,7 +205,7 @@ body {
 .open-btn:hover{
     background:#8c0615;
 }
-/* ========== 研学点位卡片 + 修复图片变形【重点】 ========== */
+/* ========== 研学点位卡片 ========== */
 .point-box {
     background:#ffffff;
     border-radius:10px;
@@ -192,13 +229,12 @@ body {
     justify-content:center;
     color:#777;
     margin:8px 0 10px;
-    overflow:hidden; /* 图片超出容器自动隐藏，防止溢出 */
+    overflow:hidden;
 }
-/* 图片全局样式，解决拉伸变形 */
 .point-img img{
     width:100%;
     height:100%;
-    object-fit:cover; /* 保持原图比例，不会压扁拉伸 */
+    object-fit:cover;
 }
 .tip-box{
     background:#fff2f2;
@@ -230,6 +266,9 @@ body {
 .back-btn:hover{
     background:#dddddd;
 }
+.back-wrap{
+    margin-bottom:16px;
+}
 /* 页脚 */
 footer{
     background:#222;
@@ -238,6 +277,117 @@ footer{
     padding:20px;
     font-size:13px;
     margin-top:30px;
+}
+/* ========== 3日行程时间轴 ========== */
+.day-block{
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+    margin-bottom:18px;
+    overflow:hidden;
+}
+.day-head{
+    background:linear-gradient(90deg,#a8071a,#c8102e);
+    color:#fff;
+    padding:12px 16px;
+    font-size:16px;
+    font-weight:bold;
+}
+.day-head small{
+    font-weight:normal;
+    font-size:12px;
+    opacity:0.9;
+    margin-left:8px;
+}
+.sched-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+}
+.sched-table th{
+    background:#faf3f3;
+    color:#a8071a;
+    padding:8px 10px;
+    text-align:left;
+    font-weight:bold;
+    border-bottom:2px solid #f0d8d8;
+    font-size:12px;
+}
+.sched-table td{
+    padding:8px 10px;
+    border-bottom:1px solid #f2ecec;
+    vertical-align:top;
+}
+.sched-table tr:last-child td{
+    border-bottom:none;
+}
+.sched-time{
+    white-space:nowrap;
+    color:#a8071a;
+    font-weight:bold;
+    width:92px;
+}
+.sched-dur{
+    white-space:nowrap;
+    color:#888;
+    font-size:12px;
+    width:60px;
+}
+.tag-type{
+    display:inline-block;
+    font-size:11px;
+    padding:1px 7px;
+    border-radius:3px;
+    color:#fff;
+    white-space:nowrap;
+}
+.t-visit{ background:#a8071a; }
+.t-study{ background:#234b8c; }
+.t-meal{ background:#d4791a; }
+.t-hotel{ background:#2e7d32; }
+.t-bus{ background:#666; }
+.t-open{ background:#8e24aa; }
+.t-close{ background:#c9a227; }
+.t-play{ background:#00838f; }
+/* 费用说明卡片 */
+.fee-card{
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+    padding:18px;
+    margin-bottom:18px;
+}
+.fee-total{
+    text-align:center;
+    padding:14px;
+    background:linear-gradient(90deg,#fff5f5,#ffe8e8);
+    border-radius:10px;
+    margin-bottom:14px;
+}
+.fee-total .num{
+    font-size:32px;
+    color:#a8071a;
+    font-weight:bold;
+}
+.fee-total .unit{
+    font-size:14px;
+    color:#666;
+}
+.fee-row{
+    display:flex;
+    justify-content:space-between;
+    padding:8px 4px;
+    border-bottom:1px dashed #eee;
+    font-size:14px;
+}
+.fee-row:last-of-type{ border-bottom:none; }
+.fee-row .lbl{ color:#555; }
+.fee-row .val{ color:#333; font-weight:bold; }
+.fee-note{
+    font-size:12px;
+    color:#999;
+    margin-top:10px;
+    line-height:1.6;
 }
 /* ========== 留言板 ========== */
 .msg-board{
@@ -335,7 +485,94 @@ footer{
 .msg-del:hover{
     color:#a8071a;
 }
-/* 图片放大弹窗样式 */
+.msg-counter{
+    font-size:12px;
+    color:#999;
+    text-align:right;
+    margin-top:6px;
+}
+/* ========== 可行性研究报告页 ========== */
+.report-wrap{
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.09);
+    padding:24px 20px;
+}
+.report-wrap h2{
+    font-size:20px;
+    color:#a8071a;
+    text-align:center;
+    margin-bottom:6px;
+    line-height:1.4;
+}
+.report-sub{
+    text-align:center;
+    color:#888;
+    font-size:13px;
+    margin-bottom:20px;
+    padding-bottom:14px;
+    border-bottom:2px solid #a8071a;
+}
+-report-meta{
+    background:#faf6f0;
+    border-radius:8px;
+    padding:12px 14px;
+    font-size:13px;
+    color:#555;
+    margin-bottom:18px;
+    line-height:1.9;
+}
+.report-h1{
+    font-size:17px;
+    font-weight:bold;
+    color:#a8071a;
+    margin:22px 0 10px;
+    padding-left:10px;
+    border-left:4px solid #a8071a;
+}
+.report-h2{
+    font-size:15px;
+    font-weight:bold;
+    color:#333;
+    margin:14px 0 8px;
+}
+.report-wrap p{
+    font-size:14px;
+    color:#444;
+    margin-bottom:8px;
+    text-align:justify;
+}
+.report-wrap ul{
+    padding-left:22px;
+    margin-bottom:10px;
+}
+.report-wrap li{
+    font-size:14px;
+    color:#444;
+    margin-bottom:6px;
+    line-height:1.8;
+}
+.report-highlight{
+    background:#fff5f5;
+    border:1px solid #f5c6c6;
+    border-radius:8px;
+    padding:12px 14px;
+    margin:12px 0;
+    font-size:14px;
+    color:#a8071a;
+    font-weight:bold;
+    text-align:center;
+}
+.report-conclusion{
+    background:linear-gradient(90deg,#a8071a,#c8102e);
+    color:#fff;
+    border-radius:10px;
+    padding:16px 18px;
+    margin-top:18px;
+    font-size:14px;
+    line-height:1.9;
+}
+/* 图片放大弹窗 */
 .img-modal {
     display: none;
     position: fixed;
@@ -390,7 +627,6 @@ footer{
     transition: transform .2s ease;
     transform-origin: center center;
 }
-/* 清晰增强效果：提高清晰锐利度 */
 .img-modal img.enhanced{
     filter: contrast(1.14) saturate(1.25) brightness(1.02);
     image-rendering: -webkit-optimize-contrast;
@@ -408,30 +644,18 @@ img{
     max-width: 100%;
     height: auto;
 }
-/* 手机屏幕适配，宽度小于768px生效 */
 @media (max-width: 768px) {
     body {
         padding: 0 10px;
         overflow-x: hidden;
     }
-    /* 研学路线卡片 手机占满整行 */
-    .route-card {
-        width: 100% !important;
-    }
-    /* 图片容器缩小一点，手机更美观 */
-    .point-img {
-        min-height: 140px;
-    }
-    /* 标题字号手机缩小 */
-    h1 {
-        font-size: 22px;
-    }
-    h2 {
-        font-size: 18px;
-    }
-    p {
-        font-size: 15px;
-    }
+    .route-card { width: 100% !important; }
+    .point-img { min-height: 140px; }
+    h1 { font-size: 22px; }
+    h2 { font-size: 18px; }
+    p { font-size: 15px; }
+    .sched-table { font-size:12px; }
+    .sched-time { width:78px; }
 }
     </style>
 </head>
@@ -442,24 +666,25 @@ img{
         <p>赓续红色血脉 传承特区精神</p>
         <div class="nav-menu">
             <button class="nav-btn nav-active" id="navHome" onclick="goHome()">首页</button>
+            <button class="nav-btn" id="navReport" onclick="goReport()">可研报告</button>
             <button class="nav-btn" id="navMsg" onclick="goMsg()">留言板</button>
         </div>
     </div>
 
-    <!-- 首页Banner（携程大图宣传风格） -->
+    <!-- 首页Banner -->
     <div id="homeBanner" class="banner">
         <h2>红色研学精品线路推荐</h2>
         <div class="banner-text">
-            追寻深圳红色足迹，感悟百年奋斗历程，学习特区开拓精神，开展主题党日、红色教育研学实践。
+            追寻深圳红色足迹，感悟百年奋斗历程，学习特区开拓精神，开展主题党日、红色教育研学实践。<br>
+            <strong style="font-size:15px;">标准班：3天2夜 · 1980元/人 · 含食宿学全闭环</strong>
         </div>
     </div>
 
     <div class="container">
         <!-- 首页 -->
         <div id="home" class="page active">
-            <!-- 搜索框 -->
             <div class="search-box">
-                <input id="searchInput" type="text" placeholder="🔍 搜索研学路线（区域/主题/名称）">
+                <input id="searchInput" type="text" placeholder="?? 搜索研学路线（区域/主题/名称）">
             </div>
             <div class="section-title">精品研学路线</div>
             <div id="routeList">
@@ -471,8 +696,10 @@ img{
                             <span class="tag-theme">改革开放主题</span>
                         </div>
                         <div class="route-title">改革开放再出发线</div>
-                        <div class="route-desc">
-                            沿着深圳改革开放发展足迹，探访莲花山公园、大潮起珠江展览馆、深圳党史馆、深中大桥。感悟敢闯敢试、敢为人先、埋头苦干的特区精神，见证深圳伟大变革。
+                        <div class="route-desc">沿着深圳改革开放发展足迹，探访莲花山公园、大潮起珠江展览馆、深圳党史馆、深中大桥。感悟敢闯敢试、敢为人先、埋头苦干的特区精神。</div>
+                        <div class="price-banner">
+                            <div><span class="price-num">￥1980</span><span class="price-unit">/人</span></div>
+                            <div class="price-include">3天2夜 · <span>含住宿</span><span>含餐饮</span><span>含教学</span><span>含大巴</span></div>
                         </div>
                         <div class="card-btn-wrap">
                             <button class="open-btn" onclick="showPage(1)">查看路线详情</button>
@@ -488,8 +715,10 @@ img{
                             <span class="tag-theme">抗战革命史</span>
                         </div>
                         <div class="route-title">东纵峥嵘抗战线</div>
-                        <div class="route-desc">
-                            东江纵队纪念馆→前进报社旧址→土洋村东纵司令部旧址→沙鱼涌北撤纪念公园，重温华南敌后艰苦卓绝的抗战斗争历史。
+                        <div class="route-desc">东江纵队纪念馆→前进报社旧址→土洋村东纵司令部旧址→沙鱼涌北撤纪念公园，重温华南敌后艰苦卓绝的抗战斗争历史。</div>
+                        <div class="price-banner">
+                            <div><span class="price-num">￥1980</span><span class="price-unit">/人</span></div>
+                            <div class="price-include">3天2夜 · <span>含住宿</span><span>含餐饮</span><span>含教学</span><span>含大巴</span></div>
                         </div>
                         <div class="card-btn-wrap">
                             <button class="open-btn" onclick="showPage(2)">查看路线详情</button>
@@ -505,8 +734,10 @@ img{
                             <span class="tag-theme">统一战线</span>
                         </div>
                         <div class="route-title">文化营救统战线</div>
-                        <div class="route-desc">
-                            白石龙文化名人大营救纪念馆→阳台山森林公园。追寻文化名人大营救壮举，感悟统一战线力量，守护民族文化根脉。
+                        <div class="route-desc">白石龙文化名人大营救纪念馆→阳台山森林公园。追寻文化名人大营救壮举，感悟统一战线力量，守护民族文化根脉。</div>
+                        <div class="price-banner">
+                            <div><span class="price-num">￥1980</span><span class="price-unit">/人</span></div>
+                            <div class="price-include">3天2夜 · <span>含住宿</span><span>含餐饮</span><span>含教学</span><span>含大巴</span></div>
                         </div>
                         <div class="card-btn-wrap">
                             <button class="open-btn" onclick="showPage(3)">查看路线详情</button>
@@ -522,8 +753,10 @@ img{
                             <span class="tag-theme">党史溯源</span>
                         </div>
                         <div class="route-title">宝安星火溯源线</div>
-                        <div class="route-desc">
-                            中共宝安县一大纪念馆→东宝行政督导处旧址，追溯深圳党组织诞生历程，学习早期农民运动，探寻深圳红色星火起源。
+                        <div class="route-desc">中共宝安县一大纪念馆→东宝行政督导处旧址，追溯深圳党组织诞生历程，学习早期农民运动，探寻深圳红色星火起源。</div>
+                        <div class="price-banner">
+                            <div><span class="price-num">￥1980</span><span class="price-unit">/人</span></div>
+                            <div class="price-include">3天2夜 · <span>含住宿</span><span>含餐饮</span><span>含教学</span><span>含大巴</span></div>
                         </div>
                         <div class="card-btn-wrap">
                             <button class="open-btn" onclick="showPage(4)">查看路线详情</button>
@@ -539,8 +772,10 @@ img{
                             <span class="tag-theme">特区初创</span>
                         </div>
                         <div class="route-title">特区奋斗蜕变线</div>
-                        <div class="route-desc">
-                            渔民村→国贸大厦→东江游击队指挥部旧址，回顾特区初创奋斗历程，感悟“深圳速度”，学习白手起家的开拓精神。
+                        <div class="route-desc">渔民村→国贸大厦→东江游击队指挥部旧址，回顾特区初创奋斗历程，感悟"深圳速度"，学习白手起家的开拓精神。</div>
+                        <div class="price-banner">
+                            <div><span class="price-num">￥1980</span><span class="price-unit">/人</span></div>
+                            <div class="price-include">3天2夜 · <span>含住宿</span><span>含餐饮</span><span>含教学</span><span>含大巴</span></div>
                         </div>
                         <div class="card-btn-wrap">
                             <button class="open-btn" onclick="showPage(5)">查看路线详情</button>
@@ -556,8 +791,10 @@ img{
                             <span class="tag-theme">英烈缅怀</span>
                         </div>
                         <div class="route-title">英烈精神传承缅怀线</div>
-                        <div class="route-desc">
-                            深圳革命烈士陵园及各辖区烈士纪念点位。缅怀革命先烈，淬炼初心使命，传承无私奉献的崇高革命精神。
+                        <div class="route-desc">深圳革命烈士陵园及各辖区烈士纪念点位。缅怀革命先烈，淬炼初心使命，传承无私奉献的崇高革命精神。</div>
+                        <div class="price-banner">
+                            <div><span class="price-num">￥1980</span><span class="price-unit">/人</span></div>
+                            <div class="price-include">3天2夜 · <span>含住宿</span><span>含餐饮</span><span>含教学</span><span>含大巴</span></div>
                         </div>
                         <div class="card-btn-wrap">
                             <button class="open-btn" onclick="showPage(6)">查看路线详情</button>
@@ -572,9 +809,11 @@ img{
                             <span class="tag-area">前海·南山</span>
                             <span class="tag-theme">科创现代化</span>
                         </div>
-                        <div class="route-title">改革开放样板•科创向未来研学线</div>
-                        <div class="route-desc">
-                            前海石公园→当代艺术与城市规划馆→南山科创园区党建展厅→深圳科技馆新馆。解码深圳样板，感悟科技自立自强，展望中国式现代化图景。
+                        <div class="route-title">改革开放样板·科创向未来研学线</div>
+                        <div class="route-desc">前海石公园→当代艺术与城市规划馆→南山科创园区党建展厅→深圳科技馆新馆。解码深圳样板，感悟科技自立自强。</div>
+                        <div class="price-banner">
+                            <div><span class="price-num">￥1980</span><span class="price-unit">/人</span></div>
+                            <div class="price-include">3天2夜 · <span>含住宿</span><span>含餐饮</span><span>含教学</span><span>含大巴</span></div>
                         </div>
                         <div class="card-btn-wrap">
                             <button class="open-btn" onclick="showPage(7)">查看路线详情</button>
@@ -585,326 +824,764 @@ img{
             <div id="emptyTip" class="no-tip">暂无匹配研学路线</div>
         </div>
 
-        <!--路线1详情页-->
+        <!-- ============ 路线1详情 ============ -->
         <div id="page1" class="page">
-            <div class="back-wrap">
-                <button class="back-btn" onclick="backHome()">← 返回首页</button>
-            </div>
-            <div class="route-card">
-                <div class="card-inner">
-                    <div class="card-tag-group">
-                        <span class="tag-area">福田</span>
-                        <span class="tag-theme">改革开放主题</span>
-                    </div>
-                    <div class="route-title">改革开放再出发线</div>
-                    <div class="route-desc">
-                        沿着深圳改革开放发展足迹，探访红色地标，感悟敢闯敢试、敢为人先、埋头苦干的特区精神。重走改革开放之路，感悟深圳从边陲小镇到国际化大都市的伟大变革。
-                    </div>
+            <div class="back-wrap"><button class="back-btn" onclick="backHome()">← 返回首页</button></div>
+            <div class="route-card"><div class="card-inner">
+                <div class="card-tag-group"><span class="tag-area">福田</span><span class="tag-theme">改革开放主题</span></div>
+                <div class="route-title">改革开放再出发线</div>
+                <div class="route-desc">沿着深圳改革开放发展足迹，探访红色地标，感悟敢闯敢试、敢为人先、埋头苦干的特区精神。</div>
+                <div class="price-banner">
+                    <div><span class="price-num">￥1980</span><span class="price-unit">/人</span></div>
+                    <div class="price-include">3天2夜 · 含食宿学 · 全程大巴</div>
                 </div>
-            </div>
-            <div class="section-title">📍研学点位</div>
+            </div></div>
+
+            <div class="section-title">??研学点位与时间分配</div>
             <div class="point-box">
-                <div class="point-title">① 莲花山公园</div>
-                <div class="point-img"><img src="lianhua.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
-                <p>深圳标志性红色地标、改革开放精神象征地。登高俯瞰深圳全景，缅怀伟人开拓精神，感悟改革开放宏伟蓝图。</p>
-            </div>
-            <div class="point-box">
-                <div class="point-title">② 大潮起珠江改革开放展览馆</div>
-                <div class="point-img"><img src="dachao.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
-                <p>全面展示广东、深圳四十年改革开放壮阔历程，通过实物、影像、史料再现特区崛起奇迹。</p>
+                <div class="point-title">① 莲花山公园（现场教学 90分钟）</div>
+                <div class="point-img"><img src="lianhua.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>深圳标志性红色地标。登山顶瞻仰邓小平铜像（参观30min），俯瞰深圳中心区全景（现场讲解30min），重温入党誓词微党课（30min）。</p>
             </div>
             <div class="point-box">
-                <div class="point-title">③ 深圳党史馆</div>
-                <div class="point-img"><img src="dangshi.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
-                <p>系统梳理深圳百年党史脉络，展示深圳从革命、建设、改革到新时代的完整奋斗历程。</p>
+                <div class="point-title">② 大潮起珠江改革开放展览馆（参观+学习 150分钟）</div>
+                <div class="point-img"><img src="dachao.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>展厅参观90min（专题讲解员带队）+ 分组研讨60min。全面展示广东四十年改革开放壮阔历程。</p>
             </div>
             <div class="point-box">
-                <div class="point-title">④ 深中大桥</div>
-                <div class="point-img"><img src="daqiao.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
-                <p>世界级超级工程，代表大湾区新时代建设成就，象征改革开放持续深化、湾区融合发展新格局。</p>
+                <div class="point-title">③ 深圳党史馆（参观+学习 120分钟）</div>
+                <div class="point-img"><img src="dangshi.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>系统参观60min + 专家现场授课60min，梳理深圳百年党史脉络。</p>
             </div>
+            <div class="point-box">
+                <div class="point-title">④ 深中大桥（现场观摩 60分钟）</div>
+                <div class="point-img"><img src="daqiao.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>乘车途经+观景平台停留，讲解大湾区超级工程与湾区融合格局。</p>
+            </div>
+
+            <div class="section-title">?? 3天2夜详细日程安排</div>
+            <div class="day-block">
+                <div class="day-head">Day 1 <small>报到·开班·莲花山现场教学</small></div>
+                <table class="sched-table">
+                    <tr><th>时间</th><th>活动内容</th><th>类型</th><th>时长</th></tr>
+                    <tr><td class="sched-time">14:00-15:00</td><td>深圳北站/宝安机场接站，前往欣正智慧党建中心办理入住</td><td><span class="tag-type t-bus">接站</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">15:00-15:30</td><td>入住三星级标准客房（25㎡独立卫浴），休整</td><td><span class="tag-type t-hotel">住宿</span></td><td class="sched-dur">30min</td></tr>
+                    <tr><td class="sched-time">15:30-16:30</td><td>开班仪式：领导动员、培训纪律宣讲、授班旗</td><td><span class="tag-type t-open">开班</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">16:30-17:00</td><td>乘车前往莲花山公园</td><td><span class="tag-type t-bus">交通</span></td><td class="sched-dur">30min</td></tr>
+                    <tr><td class="sched-time">17:00-18:30</td><td>莲花山公园现场教学：瞻仰邓小平铜像、俯瞰福田中心区、重温入党誓词</td><td><span class="tag-type t-visit">参观</span>+<span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                    <tr><td class="sched-time">18:30-19:30</td><td>基地千人食堂晚餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">19:30-21:00</td><td>晚间专题党课：《特区精神——敢闯敢试、敢为人先》（中央党校同步课程）</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                    <tr><td class="sched-time">21:00</td><td>返回宿舍休息</td><td><span class="tag-type t-hotel">住宿</span></td><td class="sched-dur">—</td></tr>
+                </table>
+            </div>
+            <div class="day-block">
+                <div class="day-head">Day 2 <small>大潮起珠江 + 党史馆深度研学</small></div>
+                <table class="sched-table">
+                    <tr><th>时间</th><th>活动内容</th><th>类型</th><th>时长</th></tr>
+                    <tr><td class="sched-time">07:00-07:30</td><td>起床整理</td><td>—</td><td class="sched-dur">30min</td></tr>
+                    <tr><td class="sched-time">07:30-08:15</td><td>基地早餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">45min</td></tr>
+                    <tr><td class="sched-time">08:15-08:45</td><td>乘车前往当代艺术与城市规划馆</td><td><span class="tag-type t-bus">交通</span></td><td class="sched-dur">30min</td></tr>
+                    <tr><td class="sched-time">08:45-11:15</td><td>大潮起珠江展览馆：专题讲解参观90min + 分组研讨60min</td><td><span class="tag-type t-visit">参观</span>+<span class="tag-type t-study">学习</span></td><td class="sched-dur">150min</td></tr>
+                    <tr><td class="sched-time">11:30-12:30</td><td>附近餐厅午餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">12:45-13:00</td><td>乘车前往深圳党史馆</td><td><span class="tag-type t-bus">交通</span></td><td class="sched-dur">15min</td></tr>
+                    <tr><td class="sched-time">13:00-15:00</td><td>深圳党史馆：系统参观60min + 专家现场授课60min</td><td><span class="tag-type t-visit">参观</span>+<span class="tag-type t-study">学习</span></td><td class="sched-dur">120min</td></tr>
+                    <tr><td class="sched-time">15:00-15:30</td><td>返回基地，茶歇休息</td><td>—</td><td class="sched-dur">30min</td></tr>
+                    <tr><td class="sched-time">15:30-17:00</td><td>VR/AR沉浸式党史馆体验：VR重走长征路、AR入党誓词</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                    <tr><td class="sched-time">18:00-19:00</td><td>基地晚餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">19:30-21:00</td><td>分组交流：结合本单位实际谈"改革开放再出发"心得体会</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                </table>
+            </div>
+            <div class="day-block">
+                <div class="day-head">Day 3 <small>深中大桥观摩·结业返程</small></div>
+                <table class="sched-table">
+                    <tr><th>时间</th><th>活动内容</th><th>类型</th><th>时长</th></tr>
+                    <tr><td class="sched-time">07:30-08:15</td><td>早餐、退房（行李集中存放）</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">45min</td></tr>
+                    <tr><td class="sched-time">08:30-09:30</td><td>乘车前往深中大桥观景平台</td><td><span class="tag-type t-bus">交通</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">09:30-10:30</td><td>深中大桥现场观摩：讲解超级工程与大湾区融合格局</td><td><span class="tag-type t-visit">参观</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">10:30-11:30</td><td>返回基地</td><td><span class="tag-type t-bus">交通</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">11:30-12:30</td><td>基地午餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">13:00-14:00</td><td>结业仪式：学员代表发言、颁发培训证书、领导总结</td><td><span class="tag-type t-close">结业</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">14:30</td><td>送站返程</td><td><span class="tag-type t-bus">送站</span></td><td class="sched-dur">—</td></tr>
+                </table>
+            </div>
+
+            <div class="section-title">??费用说明（1980元/人）</div>
+            <div class="fee-card">
+                <div class="fee-total"><span class="num">￥1980</span> <span class="unit">/人 · 3天2夜全包</span></div>
+                <div class="fee-row"><span class="lbl">住宿（2晚三星级标准间）</span><span class="val">￥600</span></div>
+                <div class="fee-row"><span class="lbl">餐饮（2早5正）</span><span class="val">￥400</span></div>
+                <div class="fee-row"><span class="lbl">教学（师资+课程+VR设备+教材）</span><span class="val">￥600</span></div>
+                <div class="fee-row"><span class="lbl">现场教学点门票+专题讲解</span><span class="val">￥180</span></div>
+                <div class="fee-row"><span class="lbl">全程大巴交通+保险</span><span class="val">￥200</span></div>
+                <div class="fee-note">注：10人成团，单人单间补房差300元；往返大交通（高铁/机票）需派出单位另行结算。</div>
+            </div>
+
             <div class="tip-box">
-                <h4>📌研学提示</h4>
+                <h4>??研学提示</h4>
                 <p><strong>研学主题：</strong>敢闯敢试、改革开放再出发<br>
                 <strong>学习重点：</strong>特区精神、改革开放历程、粤港澳大湾区建设<br>
-                <strong>预约提醒：</strong>大潮起珠江展览馆、深圳党史馆需要提前线上预约。</p>
+                <strong>预约提醒：</strong>大潮起珠江展览馆、深圳党史馆需提前线上预约。</p>
             </div>
         </div>
 
-        <!--路线2详情页-->
+        <!-- ============ 路线2详情 ============ -->
         <div id="page2" class="page">
-            <div class="back-wrap">
-                <button class="back-btn" onclick="backHome()">← 返回首页</button>
-            </div>
-            <div class="route-card">
-                <div class="card-inner">
-                    <div class="card-tag-group">
-                        <span class="tag-area">坪山-大鹏</span>
-                        <span class="tag-theme">抗战革命史</span>
-                    </div>
-                    <div class="route-title">东纵峥嵘抗战线</div>
-                    <div class="route-desc">
-                        重温东江纵队在华南敌后艰苦卓绝的抗战历史，走访多处东纵核心旧址，体悟革命队伍不畏强敌、浴血坚守的红色斗争精神。
-                    </div>
+            <div class="back-wrap"><button class="back-btn" onclick="backHome()">← 返回首页</button></div>
+            <div class="route-card"><div class="card-inner">
+                <div class="card-tag-group"><span class="tag-area">坪山-大鹏</span><span class="tag-theme">抗战革命史</span></div>
+                <div class="route-title">东纵峥嵘抗战线</div>
+                <div class="route-desc">重温东江纵队在华南敌后艰苦卓绝的抗战历史，走访多处东纵核心旧址。</div>
+                <div class="price-banner">
+                    <div><span class="price-num">￥1980</span><span class="price-unit">/人</span></div>
+                    <div class="price-include">3天2夜 · 含食宿学 · 全程大巴</div>
                 </div>
-            </div>
-            <div class="section-title">📍研学点位</div>
+            </div></div>
+
+            <div class="section-title">??研学点位与时间分配</div>
             <div class="point-box">
-                <div class="point-title">① 东江纵队纪念馆</div>
-                <div class="point-img"><img src="jiangdong.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
-                <p>全面展示东江纵队发展历史、重要战役、英雄事迹，是华南抗战最重要红色教育基地。</p>
-            </div>
-            <div class="point-box">
-                <div class="point-title">② 前进报社旧址</div>
-                <div class="point-img"><img src="baoshe.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
-                <p>东纵战时宣传阵地，在艰苦环境中传播抗日思想、凝聚民心，见证红色舆论战线力量。</p>
+                <div class="point-title">① 东江纵队纪念馆（参观+学习 150分钟）</div>
+                <div class="point-img"><img src="jiangdong.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>展厅参观90min + 东纵历史专题课60min。华南抗战最重要红色教育基地。</p>
             </div>
             <div class="point-box">
-                <div class="point-title">③ 土洋村东纵司令部旧址</div>
-                <div class="point-img"><img src="tuyang.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
-                <p>东江纵队曾经的指挥核心，是华南敌后抗日斗争重要指挥中枢。</p>
+                <div class="point-title">② 前进报社旧址（现场教学 60分钟）</div>
+                <div class="point-img"><img src="baoshe.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>现场讲解30min + 诵读战时报刊片段30min，见证红色舆论战线力量。</p>
             </div>
             <div class="point-box">
-                <div class="point-title">④ 沙鱼涌北撤纪念公园</div>
-                <div class="point-img"><img src="shayu.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
-                <p>记录东纵主力北撤历史，见证革命队伍顾全大局、严守纪律的崇高革命品格。</p>
+                <div class="point-title">③ 土洋村东纵司令部旧址（现场教学 90分钟）</div>
+                <div class="point-img"><img src="tuyang.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>旧址参观45min + 微党课《华南敌后指挥中枢》45min。</p>
             </div>
+            <div class="point-box">
+                <div class="point-title">④ 沙鱼涌北撤纪念公园（现场教学 90分钟）</div>
+                <div class="point-img"><img src="shayu.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>海边纪念公园凭吊45min + 现场教学《顾全大局的革命品格》45min。</p>
+            </div>
+
+            <div class="section-title">?? 3天2夜详细日程安排</div>
+            <div class="day-block">
+                <div class="day-head">Day 1 <small>报到·开班·东纵纪念馆</small></div>
+                <table class="sched-table">
+                    <tr><th>时间</th><th>活动内容</th><th>类型</th><th>时长</th></tr>
+                    <tr><td class="sched-time">14:00-15:00</td><td>接站前往欣正智慧党建中心，办理入住</td><td><span class="tag-type t-bus">接站</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">15:00-15:30</td><td>入住休整</td><td><span class="tag-type t-hotel">住宿</span></td><td class="sched-dur">30min</td></tr>
+                    <tr><td class="sched-time">15:30-16:30</td><td>开班仪式、纪律宣讲</td><td><span class="tag-type t-open">开班</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">16:30-17:30</td><td>乘车前往坪山东江纵队纪念馆</td><td><span class="tag-type t-bus">交通</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">17:30-18:30</td><td>纪念馆展厅参观（第一部分：东纵成立与发展）</td><td><span class="tag-type t-visit">参观</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">18:30-19:30</td><td>坪山附近晚餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">20:00</td><td>乘车返回基地休息</td><td><span class="tag-type t-bus">交通</span></td><td class="sched-dur">60min</td></tr>
+                </table>
+            </div>
+            <div class="day-block">
+                <div class="day-head">Day 2 <small>东纵纪念馆深学 + 前进报社 + 土洋司令部</small></div>
+                <table class="sched-table">
+                    <tr><th>时间</th><th>活动内容</th><th>类型</th><th>时长</th></tr>
+                    <tr><td class="sched-time">07:00-07:30</td><td>起床</td><td>—</td><td class="sched-dur">30min</td></tr>
+                    <tr><td class="sched-time">07:30-08:15</td><td>基地早餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">45min</td></tr>
+                    <tr><td class="sched-time">08:30-09:30</td><td>乘车前往坪山</td><td><span class="tag-type t-bus">交通</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">09:30-11:30</td><td>东纵纪念馆续学：专题课《华南敌后抗战史》60min + 重要战役展厅参观60min</td><td><span class="tag-type t-study">学习</span>+<span class="tag-type t-visit">参观</span></td><td class="sched-dur">120min</td></tr>
+                    <tr><td class="sched-time">12:00-13:00</td><td>坪山午餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">13:30-14:30</td><td>前进报社旧址现场教学</td><td><span class="tag-type t-visit">参观</span>+<span class="tag-type t-study">学习</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">15:00-16:30</td><td>土洋村东纵司令部旧址现场教学（含微党课）</td><td><span class="tag-type t-visit">参观</span>+<span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                    <tr><td class="sched-time">17:30-18:30</td><td>返回大鹏所城附近晚餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">19:30-21:00</td><td>晚间：观看红色影片《东江纵队》+ 心得分享</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                </table>
+            </div>
+            <div class="day-block">
+                <div class="day-head">Day 3 <small>沙鱼涌北撤纪念·结业返程</small></div>
+                <table class="sched-table">
+                    <tr><th>时间</th><th>活动内容</th><th>类型</th><th>时长</th></tr>
+                    <tr><td class="sched-time">07:30-08:15</td><td>早餐、退房</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">45min</td></tr>
+                    <tr><td class="sched-time">08:30-09:15</td><td>乘车前往沙鱼涌</td><td><span class="tag-type t-bus">交通</span></td><td class="sched-dur">45min</td></tr>
+                    <tr><td class="sched-time">09:15-10:45</td><td>沙鱼涌北撤纪念公园现场教学（凭吊+专题课）</td><td><span class="tag-type t-visit">参观</span>+<span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                    <tr><td class="sched-time">11:00-12:00</td><td>返回基地</td><td><span class="tag-type t-bus">交通</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">12:00-13:00</td><td>基地午餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">13:30-14:30</td><td>结业仪式、颁发证书、学员代表发言</td><td><span class="tag-type t-close">结业</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">15:00</td><td>送站返程</td><td><span class="tag-type t-bus">送站</span></td><td class="sched-dur">—</td></tr>
+                </table>
+            </div>
+
+            <div class="section-title">??费用说明（1980元/人）</div>
+            <div class="fee-card">
+                <div class="fee-total"><span class="num">￥1980</span> <span class="unit">/人 · 3天2夜全包</span></div>
+                <div class="fee-row"><span class="lbl">住宿（2晚三星级标准间）</span><span class="val">￥600</span></div>
+                <div class="fee-row"><span class="lbl">餐饮（2早5正）</span><span class="val">￥400</span></div>
+                <div class="fee-row"><span class="lbl">教学（师资+课程+教材+影片）</span><span class="val">￥580</span></div>
+                <div class="fee-row"><span class="lbl">现场教学点+讲解</span><span class="val">￥150</span></div>
+                <div class="fee-row"><span class="lbl">全程大巴（坪山大鹏较远）+保险</span><span class="val">￥250</span></div>
+                <div class="fee-note">注：本路线跨坪山-大鹏，车程较长，大巴费用略高；10人成团。</div>
+            </div>
+
             <div class="tip-box">
-                <h4>📌研学提示</h4>
+                <h4>??研学提示</h4>
                 <p><strong>研学主题：</strong>华南敌后抗战，革命斗争史<br>
-                <strong>学习重点：</strong>东纵精神、艰苦奋斗、华南敌后抗日斗争历史</p>
+                <strong>学习重点：</strong>东纵精神、艰苦奋斗、华南敌后抗日斗争历史<br>
+                <strong>着装提醒：</strong>Day2有旧址步行，请穿舒适运动鞋。</p>
             </div>
         </div>
 
-        <!--路线3详情页-->
+        <!-- ============ 路线3详情 ============ -->
         <div id="page3" class="page">
-            <div class="back-wrap">
-                <button class="back-btn" onclick="backHome()">← 返回首页</button>
-            </div>
-            <div class="route-card">
-                <div class="card-inner">
-                    <div class="card-tag-group">
-                        <span class="tag-area">龙华</span>
-                        <span class="tag-theme">统一战线</span>
-                    </div>
-                    <div class="route-title">文化营救统战线</div>
-                    <div class="route-desc">
-                        追寻抗战时期震惊中外的“香港文化名人大营救”历史，感悟党的统一战线智慧与担当，体会共产党人守护中华文化命脉的初心。
-                    </div>
+            <div class="back-wrap"><button class="back-btn" onclick="backHome()">← 返回首页</button></div>
+            <div class="route-card"><div class="card-inner">
+                <div class="card-tag-group"><span class="tag-area">龙华</span><span class="tag-theme">统一战线</span></div>
+                <div class="route-title">文化营救统战线</div>
+                <div class="route-desc">追寻抗战时期震惊中外的"香港文化名人大营救"历史，感悟党的统一战线智慧。</div>
+                <div class="price-banner">
+                    <div><span class="price-num">￥1980</span><span class="price-unit">/人</span></div>
+                    <div class="price-include">3天2夜 · 含食宿学 · 全程大巴</div>
                 </div>
-            </div>
-            <div class="section-title">📍研学点位</div>
+            </div></div>
+
+            <div class="section-title">??研学点位与时间分配</div>
             <div class="point-box">
-                <div class="point-title">① 白石龙文化名人大营救纪念馆</div>
-                <div class="point-img"><img src="baishi.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
-                <p>完整记录1942年文化名人大营救全过程，展现中共地下党员、东江纵队冒着风险保护数百名文人志士的伟大壮举。</p>
+                <div class="point-title">① 白石龙文化名人大营救纪念馆（参观+学习 150分钟）</div>
+                <div class="point-img"><img src="baishi.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>展厅参观90min + 专题课《秘密大营救与统一战线》60min。</p>
             </div>
             <div class="point-box">
-                <div class="point-title">② 阳台山森林公园</div>
-                <div class="point-img"><img src="yangtai.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
-                <p>当年大营救重要隐蔽、转移通道，山林间承载深厚红色记忆，适合红色徒步研学。</p>
+                <div class="point-title">② 阳台山森林公园（红色徒步+现场教学 180分钟）</div>
+                <div class="point-img"><img src="yangtai.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>沿当年大营救转移通道徒步90min + 山腰隐蔽点现场微党课45min + 山顶交流45min。</p>
             </div>
+
+            <div class="section-title">?? 3天2夜详细日程安排</div>
+            <div class="day-block">
+                <div class="day-head">Day 1 <small>报到·开班·专题导学</small></div>
+                <table class="sched-table">
+                    <tr><th>时间</th><th>活动内容</th><th>类型</th><th>时长</th></tr>
+                    <tr><td class="sched-time">14:00-15:00</td><td>接站前往欣正智慧党建中心，办理入住</td><td><span class="tag-type t-bus">接站</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">15:00-15:30</td><td>入住休整</td><td><span class="tag-type t-hotel">住宿</span></td><td class="sched-dur">30min</td></tr>
+                    <tr><td class="sched-time">15:30-16:30</td><td>开班仪式、纪律宣讲</td><td><span class="tag-type t-open">开班</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">16:30-18:00</td><td>基地教室导学课：《香港文化名人大营救历史背景》</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                    <tr><td class="sched-time">18:00-19:00</td><td>基地晚餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">19:30-21:00</td><td>VR沉浸式体验：重走秘密大营救路线</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                </table>
+            </div>
+            <div class="day-block">
+                <div class="day-head">Day 2 <small>白石龙纪念馆 + 阳台山红色徒步</small></div>
+                <table class="sched-table">
+                    <tr><th>时间</th><th>活动内容</th><th>类型</th><th>时长</th></tr>
+                    <tr><td class="sched-time">07:00-07:30</td><td>起床</td><td>—</td><td class="sched-dur">30min</td></tr>
+                    <tr><td class="sched-time">07:30-08:15</td><td>基地早餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">45min</td></tr>
+                    <tr><td class="sched-time">08:30-09:00</td><td>乘车前往白石龙</td><td><span class="tag-type t-bus">交通</span></td><td class="sched-dur">30min</td></tr>
+                    <tr><td class="sched-time">09:00-11:30</td><td>白石龙文化名人大营救纪念馆：参观90min + 专题课60min</td><td><span class="tag-type t-visit">参观</span>+<span class="tag-type t-study">学习</span></td><td class="sched-dur">150min</td></tr>
+                    <tr><td class="sched-time">12:00-13:00</td><td>龙华农家菜午餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">13:30-16:30</td><td>阳台山森林公园红色徒步研学（徒步+微党课+山顶交流）</td><td><span class="tag-type t-play">徒步</span>+<span class="tag-type t-study">学习</span></td><td class="sched-dur">180min</td></tr>
+                    <tr><td class="sched-time">17:30-18:30</td><td>返回基地晚餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">19:30-21:00</td><td>分组研讨：新时代统一战线与文化自信</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                </table>
+            </div>
+            <div class="day-block">
+                <div class="day-head">Day 3 <small>专题升华·结业返程</small></div>
+                <table class="sched-table">
+                    <tr><th>时间</th><th>活动内容</th><th>类型</th><th>时长</th></tr>
+                    <tr><td class="sched-time">07:30-08:15</td><td>早餐、退房</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">45min</td></tr>
+                    <tr><td class="sched-time">09:00-10:30</td><td>基地教室：专题课《从秘密大营救看党的统一战线法宝》</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                    <tr><td class="sched-time">10:30-11:30</td><td>学员学习成果汇报交流</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">12:00-13:00</td><td>基地午餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">13:30-14:30</td><td>结业仪式、颁发证书</td><td><span class="tag-type t-close">结业</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">15:00</td><td>送站返程</td><td><span class="tag-type t-bus">送站</span></td><td class="sched-dur">—</td></tr>
+                </table>
+            </div>
+
+            <div class="section-title">??费用说明（1980元/人）</div>
+            <div class="fee-card">
+                <div class="fee-total"><span class="num">￥1980</span> <span class="unit">/人 · 3天2夜全包</span></div>
+                <div class="fee-row"><span class="lbl">住宿（2晚三星级标准间）</span><span class="val">￥600</span></div>
+                <div class="fee-row"><span class="lbl">餐饮（2早5正，含1顿龙华农家菜）</span><span class="val">￥420</span></div>
+                <div class="fee-row"><span class="lbl">教学（师资+VR体验+教材）</span><span class="val">￥620</span></div>
+                <div class="fee-row"><span class="lbl">现场教学点+徒步向导</span><span class="val">￥140</span></div>
+                <div class="fee-row"><span class="lbl">全程大巴+保险</span><span class="val">￥200</span></div>
+                <div class="fee-note">注：Day2阳台山徒步约5公里，请穿运动装、带水杯。</div>
+            </div>
+
             <div class="tip-box">
-                <h4>📌研学提示</h4>
+                <h4>??研学提示</h4>
                 <p><strong>研学主题：</strong>统一战线、文化守护<br>
                 <strong>学习重点：</strong>统一战线思想、文化自信、红色守护精神</p>
             </div>
         </div>
 
-        <!--路线4详情页-->
+        <!-- ============ 路线4详情 ============ -->
         <div id="page4" class="page">
-            <div class="back-wrap">
-                <button class="back-btn" onclick="backHome()">← 返回首页</button>
-            </div>
-            <div class="route-card">
-                <div class="card-inner">
-                    <div class="card-tag-group">
-                        <span class="tag-area">宝安</span>
-                        <span class="tag-theme">党史溯源</span>
-                    </div>
-                    <div class="route-title">宝安星火溯源线</div>
-                    <div class="route-desc">
-                        溯源深圳红色起点，探访深圳最早党组织诞生地，了解宝安早期革命、农民运动、红色星火燎原的奋斗历程。
-                    </div>
+            <div class="back-wrap"><button class="back-btn" onclick="backHome()">← 返回首页</button></div>
+            <div class="route-card"><div class="card-inner">
+                <div class="card-tag-group"><span class="tag-area">宝安</span><span class="tag-theme">党史溯源</span></div>
+                <div class="route-title">宝安星火溯源线</div>
+                <div class="route-desc">溯源深圳红色起点，探访深圳最早党组织诞生地。</div>
+                <div class="price-banner">
+                    <div><span class="price-num">￥1980</span><span class="price-unit">/人</span></div>
+                    <div class="price-include">3天2夜 · 含食宿学 · 全程大巴</div>
                 </div>
-            </div>
-            <div class="section-title">📍研学点位</div>
+            </div></div>
+
+            <div class="section-title">??研学点位与时间分配</div>
             <div class="point-box">
-                <div class="point-title">① 中共宝安县一大纪念馆</div>
-                <div class="point-img"><img src="zhonggong.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
-                <p>深圳党史源头，见证深圳第一个县级党组织诞生，是深圳红色星火的发源地。</p>
+                <div class="point-title">① 中共宝安县一大纪念馆（参观+学习 150分钟）</div>
+                <div class="point-img"><img src="zhonggong.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>旧址参观60min + 专题课《深圳党组织诞生记》60min + 重温入党誓词30min。</p>
             </div>
             <div class="point-box">
-                <div class="point-title">② 东宝行政督导处旧址</div>
-                <div class="point-img"><img src="dongbao.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
-                <p>东江地区重要红色政权旧址，见证共产党在东江地区建政、为民、奋斗的早期革命实践。</p>
+                <div class="point-title">② 东宝行政督导处旧址（现场教学 90分钟）</div>
+                <div class="point-img"><img src="dongbao.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>旧址参观45min + 现场教学《早期红色政权建设》45min。</p>
             </div>
+
+            <div class="section-title">?? 3天2夜详细日程安排</div>
+            <div class="day-block">
+                <div class="day-head">Day 1 <small>报到·开班·基地导学</small></div>
+                <table class="sched-table">
+                    <tr><th>时间</th><th>活动内容</th><th>类型</th><th>时长</th></tr>
+                    <tr><td class="sched-time">14:00-15:00</td><td>接站前往欣正智慧党建中心，办理入住</td><td><span class="tag-type t-bus">接站</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">15:00-15:30</td><td>入住休整</td><td><span class="tag-type t-hotel">住宿</span></td><td class="sched-dur">30min</td></tr>
+                    <tr><td class="sched-time">15:30-16:30</td><td>开班仪式</td><td><span class="tag-type t-open">开班</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">16:30-18:00</td><td>导学课：《深圳党史脉络——从宝安星火到特区辉煌》</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                    <tr><td class="sched-time">18:00-19:00</td><td>基地晚餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">19:30-21:00</td><td>观看纪录片《深圳建党记忆》</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                </table>
+            </div>
+            <div class="day-block">
+                <div class="day-head">Day 2 <small>宝安一大纪念馆 + 东宝督导处旧址</small></div>
+                <table class="sched-table">
+                    <tr><th>时间</th><th>活动内容</th><th>类型</th><th>时长</th></tr>
+                    <tr><td class="sched-time">07:00-07:30</td><td>起床</td><td>—</td><td class="sched-dur">30min</td></tr>
+                    <tr><td class="sched-time">07:30-08:15</td><td>基地早餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">45min</td></tr>
+                    <tr><td class="sched-time">08:30-09:30</td><td>乘车前往宝安</td><td><span class="tag-type t-bus">交通</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">09:30-12:00</td><td>中共宝安县一大纪念馆：参观+专题课+重温誓词</td><td><span class="tag-type t-visit">参观</span>+<span class="tag-type t-study">学习</span></td><td class="sched-dur">150min</td></tr>
+                    <tr><td class="sched-time">12:00-13:00</td><td>宝安午餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">13:30-15:00</td><td>东宝行政督导处旧址现场教学</td><td><span class="tag-type t-visit">参观</span>+<span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                    <tr><td class="sched-time">15:30-16:30</td><td>参观宝安基层治理示范社区（现场教学延伸）</td><td><span class="tag-type t-visit">参观</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">17:30-18:30</td><td>返回基地晚餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">19:30-21:00</td><td>分组研讨：不忘初心——从红色起点谈新时代使命</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                </table>
+            </div>
+            <div class="day-block">
+                <div class="day-head">Day 3 <small>深化学习·结业返程</small></div>
+                <table class="sched-table">
+                    <tr><th>时间</th><th>活动内容</th><th>类型</th><th>时长</th></tr>
+                    <tr><td class="sched-time">07:30-08:15</td><td>早餐、退房</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">45min</td></tr>
+                    <tr><td class="sched-time">09:00-10:30</td><td>基地专题课：《早期农民运动与新时代群众工作》</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                    <tr><td class="sched-time">10:30-11:30</td><td>学员心得交流、学习笔记展示</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">12:00-13:00</td><td>基地午餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">13:30-14:30</td><td>结业仪式、颁发证书</td><td><span class="tag-type t-close">结业</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">15:00</td><td>送站返程</td><td><span class="tag-type t-bus">送站</span></td><td class="sched-dur">—</td></tr>
+                </table>
+            </div>
+
+            <div class="section-title">??费用说明（1980元/人）</div>
+            <div class="fee-card">
+                <div class="fee-total"><span class="num">￥1980</span> <span class="unit">/人 · 3天2夜全包</span></div>
+                <div class="fee-row"><span class="lbl">住宿（2晚三星级标准间）</span><span class="val">￥600</span></div>
+                <div class="fee-row"><span class="lbl">餐饮（2早5正）</span><span class="val">￥400</span></div>
+                <div class="fee-row"><span class="lbl">教学（师资+纪录片+教材）</span><span class="val">￥620</span></div>
+                <div class="fee-row"><span class="lbl">现场教学点+讲解</span><span class="val">￥160</span></div>
+                <div class="fee-row"><span class="lbl">全程大巴+保险</span><span class="val">￥200</span></div>
+            </div>
+
             <div class="tip-box">
-                <h4>📌研学提示</h4>
+                <h4>??研学提示</h4>
                 <p><strong>研学主题：</strong>深圳党组织诞生与早期农民运动<br>
                 <strong>学习重点：</strong>初心源头、红色根基、早期革命探索</p>
             </div>
         </div>
 
-        <!--路线5详情页-->
+        <!-- ============ 路线5详情 ============ -->
         <div id="page5" class="page">
-            <div class="back-wrap">
-                <button class="back-btn" onclick="backHome()">← 返回首页</button>
-            </div>
-            <div class="route-card">
-                <div class="card-inner">
-                    <div class="card-tag-group">
-                        <span class="tag-area">罗湖</span>
-                        <span class="tag-theme">特区初创</span>
-                    </div>
-                    <div class="route-title">特区奋斗蜕变线</div>
-                    <div class="route-desc">
-                        走进深圳最早对外开放、最早建设发展的罗湖片区，重温特区从零起步、敢闯敢拼、艰苦创业的奋斗史诗。
-                    </div>
+            <div class="back-wrap"><button class="back-btn" onclick="backHome()">← 返回首页</button></div>
+            <div class="route-card"><div class="card-inner">
+                <div class="card-tag-group"><span class="tag-area">罗湖</span><span class="tag-theme">特区初创</span></div>
+                <div class="route-title">特区奋斗蜕变线</div>
+                <div class="route-desc">走进深圳最早对外开放的罗湖片区，重温特区从零起步、敢闯敢拼的奋斗史诗。</div>
+                <div class="price-banner">
+                    <div><span class="price-num">￥1980</span><span class="price-unit">/人</span></div>
+                    <div class="price-include">3天2夜 · 含食宿学 · 全程大巴</div>
                 </div>
-            </div>
-            <div class="section-title">📍研学点位</div>
+            </div></div>
+
+            <div class="section-title">??研学点位与时间分配</div>
             <div class="point-box">
-                <div class="point-title">① 渔民村</div>
-                <div class="point-img"><img src="yumin.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px">></div>
-                <p>中国改革开放第一村，见证深圳先行先试、共同富裕的最早探索。</p>
-            </div>
-            <div class="point-box">
-                <div class="point-title">② 国贸大厦</div>
-                <div class="point-img"><img src="guomao.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
-                <p>“三天一层楼”的深圳速度发源地，是特区拼搏奋斗精神的标志性建筑。</p>
+                <div class="point-title">① 渔民村（现场教学 90分钟）</div>
+                <div class="point-img"><img src="yumin.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>参观"中国改革开放第一村"村史展馆45min + 社区党委书记现场讲45min。</p>
             </div>
             <div class="point-box">
-                <div class="point-title">③ 东江游击队指挥部旧址</div>
-                <div class="point-img"><img src="youji.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
-                <p>承载深圳革命红色根基，串联起“革命历史—特区建设”的红色传承脉络。</p>
+                <div class="point-title">② 国贸大厦（现场教学 120分钟）</div>
+                <div class="point-img"><img src="guomao.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>登旋转餐厅俯瞰罗湖45min + "三天一层楼"深圳速度专题课75min。</p>
             </div>
+            <div class="point-box">
+                <div class="point-title">③ 东江游击队指挥部旧址（现场教学 60分钟）</div>
+                <div class="point-img"><img src="youji.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>旧址参观30min + 串联"革命—建设"传承脉络微党课30min。</p>
+            </div>
+
+            <div class="section-title">?? 3天2夜详细日程安排</div>
+            <div class="day-block">
+                <div class="day-head">Day 1 <small>报到·开班·渔民村</small></div>
+                <table class="sched-table">
+                    <tr><th>时间</th><th>活动内容</th><th>类型</th><th>时长</th></tr>
+                    <tr><td class="sched-time">14:00-15:00</td><td>接站前往欣正智慧党建中心，办理入住</td><td><span class="tag-type t-bus">接站</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">15:00-15:30</td><td>入住休整</td><td><span class="tag-type t-hotel">住宿</span></td><td class="sched-dur">30min</td></tr>
+                    <tr><td class="sched-time">15:30-16:30</td><td>开班仪式</td><td><span class="tag-type t-open">开班</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">16:30-17:00</td><td>乘车前往渔民村</td><td><span class="tag-type t-bus">交通</span></td><td class="sched-dur">30min</td></tr>
+                    <tr><td class="sched-time">17:00-18:30</td><td>渔民村现场教学：村史展馆+社区书记讲共同富裕</td><td><span class="tag-type t-visit">参观</span>+<span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                    <tr><td class="sched-time">18:30-19:30</td><td>罗湖晚餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">20:00-21:00</td><td>返回基地，晚间自习整理笔记</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">60min</td></tr>
+                </table>
+            </div>
+            <div class="day-block">
+                <div class="day-head">Day 2 <small>国贸大厦 + 东江游击队指挥部旧址</small></div>
+                <table class="sched-table">
+                    <tr><th>时间</th><th>活动内容</th><th>类型</th><th>时长</th></tr>
+                    <tr><td class="sched-time">07:00-07:30</td><td>起床</td><td>—</td><td class="sched-dur">30min</td></tr>
+                    <tr><td class="sched-time">07:30-08:15</td><td>基地早餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">45min</td></tr>
+                    <tr><td class="sched-time">08:30-09:00</td><td>乘车前往国贸大厦</td><td><span class="tag-type t-bus">交通</span></td><td class="sched-dur">30min</td></tr>
+                    <tr><td class="sched-time">09:00-11:00</td><td>国贸大厦：登楼俯瞰+深圳速度专题课</td><td><span class="tag-type t-visit">参观</span>+<span class="tag-type t-study">学习</span></td><td class="sched-dur">120min</td></tr>
+                    <tr><td class="sched-time">11:15-12:15</td><td>东江游击队指挥部旧址现场教学</td><td><span class="tag-type t-visit">参观</span>+<span class="tag-type t-study">学习</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">12:30-13:30</td><td>罗湖午餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">14:00-16:00</td><td>参观东湖宾馆/迎宾馆（邓小平南巡足迹）</td><td><span class="tag-type t-visit">参观</span></td><td class="sched-dur">120min</td></tr>
+                    <tr><td class="sched-time">17:30-18:30</td><td>返回基地晚餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">19:30-21:00</td><td>专题课：《深圳速度与特区实干精神》+ 分组讨论</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                </table>
+            </div>
+            <div class="day-block">
+                <div class="day-head">Day 3 <small>总结升华·结业返程</small></div>
+                <table class="sched-table">
+                    <tr><th>时间</th><th>活动内容</th><th>类型</th><th>时长</th></tr>
+                    <tr><td class="sched-time">07:30-08:15</td><td>早餐、退房</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">45min</td></tr>
+                    <tr><td class="sched-time">09:00-10:30</td><td>学员成果汇报：我的岗位如何践行特区精神</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                    <tr><td class="sched-time">10:30-11:30</td><td>基地党建展厅参观</td><td><span class="tag-type t-visit">参观</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">12:00-13:00</td><td>基地午餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">13:30-14:30</td><td>结业仪式、颁发证书</td><td><span class="tag-type t-close">结业</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">15:00</td><td>送站返程</td><td><span class="tag-type t-bus">送站</span></td><td class="sched-dur">—</td></tr>
+                </table>
+            </div>
+
+            <div class="section-title">??费用说明（1980元/人）</div>
+            <div class="fee-card">
+                <div class="fee-total"><span class="num">￥1980</span> <span class="unit">/人 · 3天2夜全包</span></div>
+                <div class="fee-row"><span class="lbl">住宿（2晚三星级标准间）</span><span class="val">￥600</span></div>
+                <div class="fee-row"><span class="lbl">餐饮（2早5正，含国贸旋转餐厅茶点）</span><span class="val">￥420</span></div>
+                <div class="fee-row"><span class="lbl">教学（师资+课程+教材）</span><span class="val">￥580</span></div>
+                <div class="fee-row"><span class="lbl">现场教学点+讲解</span><span class="val">￥180</span></div>
+                <div class="fee-row"><span class="lbl">全程大巴+保险</span><span class="val">￥200</span></div>
+            </div>
+
             <div class="tip-box">
-                <h4>📌研学提示</h4>
+                <h4>??研学提示</h4>
                 <p><strong>研学主题：</strong>特区初创奋斗历程<br>
                 <strong>学习重点：</strong>开拓创新、实干担当、敢为人先的特区精神</p>
             </div>
         </div>
 
-        <!--路线6详情页-->
+        <!-- ============ 路线6详情 ============ -->
         <div id="page6" class="page">
-            <div class="back-wrap">
-                <button class="back-btn" onclick="backHome()">← 返回首页</button>
-            </div>
-            <div class="route-card">
-                <div class="card-inner">
-                    <div class="card-tag-group">
-                        <span class="tag-area">全域</span>
-                        <span class="tag-theme">英烈缅怀</span>
-                    </div>
-                    <div class="route-title">英烈精神传承缅怀线</div>
-                    <div class="route-desc">
-                        立足深圳全域红色纪念阵地，缅怀为民族独立、人民解放、城市建设牺牲的革命先烈，淬炼初心、传承红色血脉。
-                    </div>
+            <div class="back-wrap"><button class="back-btn" onclick="backHome()">← 返回首页</button></div>
+            <div class="route-card"><div class="card-inner">
+                <div class="card-tag-group"><span class="tag-area">全域</span><span class="tag-theme">英烈缅怀</span></div>
+                <div class="route-title">英烈精神传承缅怀线</div>
+                <div class="route-desc">缅怀为民族独立、人民解放、城市建设牺牲的革命先烈，淬炼初心、传承红色血脉。</div>
+                <div class="price-banner">
+                    <div><span class="price-num">￥1980</span><span class="price-unit">/人</span></div>
+                    <div class="price-include">3天2夜 · 含食宿学 · 全程大巴</div>
                 </div>
-            </div>
-            <div class="section-title">📍研学点位</div>
+            </div></div>
+
+            <div class="section-title">??研学点位与时间分配</div>
             <div class="point-box">
-                <div class="point-title">深圳革命烈士陵园及各辖区烈士纪念点位</div>
-                <div class="point-img"><img src="lieshi.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
-                <p>集中承载深圳百年英烈史，记录革命战争、抗日斗争、建设年代牺牲的英雄事迹，是全市最重要的红色思政教育阵地。</p>
+                <div class="point-title">深圳革命烈士陵园（公祭仪式+现场教学 180分钟）</div>
+                <div class="point-img"><img src="lieshi.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>敬献花篮公祭仪式45min + 烈士纪念碑前重温入党誓词30min + 英烈事迹展厅参观60min + 现场微党课45min。</p>
             </div>
+            <div class="point-box">
+                <div class="point-title">补充点位：各辖区烈士纪念设施（选择性前往 90分钟）</div>
+                <p>根据班次来源地，就近安排：龙岗烈士纪念碑、宝安革命烈士纪念碑、南头古城革命历史展等。</p>
+            </div>
+
+            <div class="section-title">?? 3天2夜详细日程安排</div>
+            <div class="day-block">
+                <div class="day-head">Day 1 <small>报到·开班·英烈事迹导学</small></div>
+                <table class="sched-table">
+                    <tr><th>时间</th><th>活动内容</th><th>类型</th><th>时长</th></tr>
+                    <tr><td class="sched-time">14:00-15:00</td><td>接站前往欣正智慧党建中心，办理入住</td><td><span class="tag-type t-bus">接站</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">15:00-15:30</td><td>入住休整</td><td><span class="tag-type t-hotel">住宿</span></td><td class="sched-dur">30min</td></tr>
+                    <tr><td class="sched-time">15:30-16:30</td><td>开班仪式</td><td><span class="tag-type t-open">开班</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">16:30-18:00</td><td>导学课：《深圳英烈事迹综述——从革命战争到建设年代》</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                    <tr><td class="sched-time">18:00-19:00</td><td>基地晚餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">19:30-21:00</td><td>观看纪录片《山河铭记——深圳英烈传》</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                </table>
+            </div>
+            <div class="day-block">
+                <div class="day-head">Day 2 <small>烈士陵园公祭 + 辖区纪念设施</small></div>
+                <table class="sched-table">
+                    <tr><th>时间</th><th>活动内容</th><th>类型</th><th>时长</th></tr>
+                    <tr><td class="sched-time">07:00-07:30</td><td>起床</td><td>—</td><td class="sched-dur">30min</td></tr>
+                    <tr><td class="sched-time">07:30-08:15</td><td>基地早餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">45min</td></tr>
+                    <tr><td class="sched-time">08:30-09:00</td><td>乘车前往深圳革命烈士陵园</td><td><span class="tag-type t-bus">交通</span></td><td class="sched-dur">30min</td></tr>
+                    <tr><td class="sched-time">09:00-11:30</td><td>烈士陵园公祭仪式+重温誓词+展厅参观+微党课</td><td><span class="tag-type t-visit">缅怀</span>+<span class="tag-type t-study">学习</span></td><td class="sched-dur">150min</td></tr>
+                    <tr><td class="sched-time">12:00-13:00</td><td>附近午餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">13:30-15:00</td><td>前往辖区烈士纪念设施（龙岗/宝安/南山，按班次安排）</td><td><span class="tag-type t-bus">交通</span>+<span class="tag-type t-visit">参观</span></td><td class="sched-dur">90min</td></tr>
+                    <tr><td class="sched-time">15:30-17:00</td><td>现场教学：烈士家属/老兵访谈分享（如安排）</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                    <tr><td class="sched-time">17:30-18:30</td><td>返回基地晚餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">19:30-21:00</td><td>烛光追思会：学员讲述心中的英烈故事</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                </table>
+            </div>
+            <div class="day-block">
+                <div class="day-head">Day 3 <small>初心淬炼·结业返程</small></div>
+                <table class="sched-table">
+                    <tr><th>时间</th><th>活动内容</th><th>类型</th><th>时长</th></tr>
+                    <tr><td class="sched-time">07:30-08:15</td><td>早餐、退房</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">45min</td></tr>
+                    <tr><td class="sched-time">09:00-10:30</td><td>专题课：《从英烈精神看新时代党员的使命担当》</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                    <tr><td class="sched-time">10:30-11:30</td><td>学员撰写初心誓言、集体宣誓</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">12:00-13:00</td><td>基地午餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">13:30-14:30</td><td>结业仪式、颁发证书</td><td><span class="tag-type t-close">结业</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">15:00</td><td>送站返程</td><td><span class="tag-type t-bus">送站</span></td><td class="sched-dur">—</td></tr>
+                </table>
+            </div>
+
+            <div class="section-title">??费用说明（1980元/人）</div>
+            <div class="fee-card">
+                <div class="fee-total"><span class="num">￥1980</span> <span class="unit">/人 · 3天2夜全包</span></div>
+                <div class="fee-row"><span class="lbl">住宿（2晚三星级标准间）</span><span class="val">￥600</span></div>
+                <div class="fee-row"><span class="lbl">餐饮（2早5正）</span><span class="val">￥400</span></div>
+                <div class="fee-row"><span class="lbl">教学（师资+纪录片+仪式用品+花圈花篮）</span><span class="val">￥600</span></div>
+                <div class="fee-row"><span class="lbl">现场教学点+讲解+老兵访谈</span><span class="val">￥180</span></div>
+                <div class="fee-row"><span class="lbl">全程大巴+保险</span><span class="val">￥200</span></div>
+                <div class="fee-note">注：公祭仪式庄严肃穆，请着深色正装或制式服装。</div>
+            </div>
+
             <div class="tip-box">
-                <h4>📌研学提示</h4>
+                <h4>??研学提示</h4>
                 <p><strong>研学主题：</strong>缅怀先烈、初心淬炼<br>
-                <strong>学习重点：</strong>家国大义、无私奉献、红色精神代代传承</p>
+                <strong>学习重点：</strong>家国大义、无私奉献、红色精神代代传承<br>
+                <strong>着装要求：</strong>请着深色上衣，保持肃穆。</p>
             </div>
         </div>
 
-        <!--路线7详情页-->
+        <!-- ============ 路线7详情 ============ -->
         <div id="page7" class="page">
-            <div class="back-wrap">
-                <button class="back-btn" onclick="backHome()">← 返回首页</button>
-            </div>
-            <div class="route-card">
-                <div class="card-inner">
-                    <div class="card-tag-group">
-                        <span class="tag-area">前海·南山</span>
-                        <span class="tag-theme">科创现代化</span>
-                    </div>
-                    <div class="route-title">改革开放样板•科创向未来研学线</div>
-                    <div class="route-desc">
-                        立足前海开放前沿、南山科创高地，从改革开放历史成就走向新时代科技自立自强，解码深圳发展样板，展望中国式现代化未来图景。
-                    </div>
+            <div class="back-wrap"><button class="back-btn" onclick="backHome()">← 返回首页</button></div>
+            <div class="route-card"><div class="card-inner">
+                <div class="card-tag-group"><span class="tag-area">前海·南山</span><span class="tag-theme">科创现代化</span></div>
+                <div class="route-title">改革开放样板·科创向未来研学线</div>
+                <div class="route-desc">从改革开放历史成就走向新时代科技自立自强，解码深圳发展样板。</div>
+                <div class="price-banner">
+                    <div><span class="price-num">￥1980</span><span class="price-unit">/人</span></div>
+                    <div class="price-include">3天2夜 · 含食宿学 · 全程大巴</div>
                 </div>
-            </div>
-            <div class="section-title">📍研学点位</div>
+            </div></div>
+
+            <div class="section-title">??研学点位与时间分配</div>
             <div class="point-box">
-                <div class="point-title">① 前海石公园</div>
-                <div class="point-img"><img src="qianhai.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
-                <p>前海改革开放、新时代先行示范区精神地标，象征续写改革开放新篇章。</p>
-            </div>
-            <div class="point-box">
-                <div class="point-title">② 当代艺术与城市规划馆（大潮起珠江）</div>
-                <div class="point-img"><img src="yishu.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
-                <p>展示深圳城市蜕变历程、改革开放辉煌成果。</p>
+                <div class="point-title">① 前海石公园（现场教学 60分钟）</div>
+                <div class="point-img"><img src="qianhai.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>前海石前合影20min + "改革开放再出发"现场课40min。</p>
             </div>
             <div class="point-box">
-                <div class="point-title">③ 南山科创园区/高科技企业党建展厅</div>
-                <div class="point-img"><img src="nanshan.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
-                <p>展现新时代科技党建、科创赋能发展、党员先锋引领创新的生动实践。</p>
+                <div class="point-title">② 当代艺术与城市规划馆（参观+学习 120分钟）</div>
+                <div class="point-img"><img src="yishu.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>城市规划展参观60min + "深圳城市崛起密码"专题课60min。</p>
             </div>
             <div class="point-box">
-                <div class="point-title">④ 深圳科技馆（新馆）</div>
-                <div class="point-img"><img src="keji.jpg"style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
-                <p>代表深圳科技自立自强、创新驱动发展的未来力量。</p>
+                <div class="point-title">③ 南山科创园区党建展厅（现场教学 90分钟）</div>
+                <div class="point-img"><img src="nanshan.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>高新企业党建展厅参观45min + 企业党员先锋座谈45min。</p>
             </div>
+            <div class="point-box">
+                <div class="point-title">④ 深圳科技馆新馆（参观+学习 150分钟）</div>
+                <div class="point-img"><img src="keji.jpg" style="width:100%;height:100%;object-fit:contain;border-radius:8px"></div>
+                <p>展厅参观90min + "科技自立自强"主题课60min。</p>
+            </div>
+
+            <div class="section-title">?? 3天2夜详细日程安排</div>
+            <div class="day-block">
+                <div class="day-head">Day 1 <small>报到·开班·前海石+城市规划馆</small></div>
+                <table class="sched-table">
+                    <tr><th>时间</th><th>活动内容</th><th>类型</th><th>时长</th></tr>
+                    <tr><td class="sched-time">14:00-15:00</td><td>接站前往欣正智慧党建中心，办理入住</td><td><span class="tag-type t-bus">接站</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">15:00-15:30</td><td>入住休整</td><td><span class="tag-type t-hotel">住宿</span></td><td class="sched-dur">30min</td></tr>
+                    <tr><td class="sched-time">15:30-16:30</td><td>开班仪式</td><td><span class="tag-type t-open">开班</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">16:30-17:15</td><td>乘车前往前海石公园</td><td><span class="tag-type t-bus">交通</span></td><td class="sched-dur">45min</td></tr>
+                    <tr><td class="sched-time">17:15-18:15</td><td>前海石公园现场教学</td><td><span class="tag-type t-visit">参观</span>+<span class="tag-type t-study">学习</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">18:30-19:30</td><td>前海合作区晚餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">20:00-21:00</td><td>返回基地，晚间整理学习笔记</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">60min</td></tr>
+                </table>
+            </div>
+            <div class="day-block">
+                <div class="day-head">Day 2 <small>城市规划馆 + 南山科创展厅</small></div>
+                <table class="sched-table">
+                    <tr><th>时间</th><th>活动内容</th><th>类型</th><th>时长</th></tr>
+                    <tr><td class="sched-time">07:00-07:30</td><td>起床</td><td>—</td><td class="sched-dur">30min</td></tr>
+                    <tr><td class="sched-time">07:30-08:15</td><td>基地早餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">45min</td></tr>
+                    <tr><td class="sched-time">08:30-09:00</td><td>乘车前往当代艺术与城市规划馆</td><td><span class="tag-type t-bus">交通</span></td><td class="sched-dur">30min</td></tr>
+                    <tr><td class="sched-time">09:00-11:00</td><td>城市规划馆：参观+专题课</td><td><span class="tag-type t-visit">参观</span>+<span class="tag-type t-study">学习</span></td><td class="sched-dur">120min</td></tr>
+                    <tr><td class="sched-time">11:15-12:15</td><td>前往南山科技园片区午餐</td><td><span class="tag-type t-bus">交通</span>+<span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">13:30-15:00</td><td>南山科创园区党建展厅现场教学（参观+党员座谈）</td><td><span class="tag-type t-visit">参观</span>+<span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                    <tr><td class="sched-time">15:30-17:00</td><td>参访代表性科技企业展厅（如华为/腾讯周边展，按安排）</td><td><span class="tag-type t-visit">参观</span></td><td class="sched-dur">90min</td></tr>
+                    <tr><td class="sched-time">18:00-19:00</td><td>南山科技园晚餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">19:30-21:00</td><td>专题课：《党建引领科技创新——深圳样本》</td><td><span class="tag-type t-study">学习</span></td><td class="sched-dur">90min</td></tr>
+                </table>
+            </div>
+            <div class="day-block">
+                <div class="day-head">Day 3 <small>科技馆新馆·结业返程</small></div>
+                <table class="sched-table">
+                    <tr><th>时间</th><th>活动内容</th><th>类型</th><th>时长</th></tr>
+                    <tr><td class="sched-time">07:30-08:15</td><td>早餐、退房（行李集中）</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">45min</td></tr>
+                    <tr><td class="sched-time">08:30-09:15</td><td>乘车前往深圳科技馆新馆</td><td><span class="tag-type t-bus">交通</span></td><td class="sched-dur">45min</td></tr>
+                    <tr><td class="sched-time">09:15-11:45</td><td>科技馆新馆：展厅参观+主题课</td><td><span class="tag-type t-visit">参观</span>+<span class="tag-type t-study">学习</span></td><td class="sched-dur">150min</td></tr>
+                    <tr><td class="sched-time">12:00-13:00</td><td>基地午餐</td><td><span class="tag-type t-meal">用餐</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">13:30-14:30</td><td>结业仪式：学员谈"科创使命"、颁发证书</td><td><span class="tag-type t-close">结业</span></td><td class="sched-dur">60min</td></tr>
+                    <tr><td class="sched-time">15:00</td><td>送站返程</td><td><span class="tag-type t-bus">送站</span></td><td class="sched-dur">—</td></tr>
+                </table>
+            </div>
+
+            <div class="section-title">??费用说明（1980元/人）</div>
+            <div class="fee-card">
+                <div class="fee-total"><span class="num">￥1980</span> <span class="unit">/人 · 3天2夜全包</span></div>
+                <div class="fee-row"><span class="lbl">住宿（2晚三星级标准间）</span><span class="val">￥600</span></div>
+                <div class="fee-row"><span class="lbl">餐饮（2早5正）</span><span class="val">￥400</span></div>
+                <div class="fee-row"><span class="lbl">教学（师资+课程+企业座谈）</span><span class="val">￥600</span></div>
+                <div class="fee-row"><span class="lbl">现场教学点门票+讲解</span><span class="val">￥180</span></div>
+                <div class="fee-row"><span class="lbl">全程大巴+保险</span><span class="val">￥200</span></div>
+                <div class="fee-note">注：企业展厅参访需提前1-2周预约，按企业实际接待安排为准。</div>
+            </div>
+
             <div class="tip-box">
-                <h4>📌研学提示</h4>
-                <p><strong>研学主题：</strong>解码深圳改革开放成功样板，科技自立自强，展望中国式现代化<br>
+                <h4>??研学提示</h4>
+                <p><strong>研学主题：</strong>解码深圳改革开放成功样板，科技自立自强<br>
                 <strong>学习重点：</strong>创新精神、时代使命、青年担当</p>
             </div>
         </div>
 
-        <!--留言板页面-->
-        <div id="page8" class="page">
-            <div class="back-wrap">
-                <button class="back-btn" onclick="backHome()">← 返回首页</button>
+        <!-- ============ 可行性研究报告页 ============ -->
+        <div id="page9" class="page">
+            <div class="back-wrap"><button class="back-btn" onclick="backHome()">← 返回首页</button></div>
+            <div class="section-title">?? 项目可行性研究报告</div>
+            <div class="report-wrap">
+                <h2>关于组织地市党员干部赴深圳<br>"欣正智慧党建中心"开展常态化培训的<br>可行性研究报告</h2>
+                <div class="report-sub">呈报：各市市委书记、组织部、党校</div>
+
+                <div class="report-meta" style="background:#faf6f0;border-radius:8px;padding:12px 14px;font-size:13px;color:#555;margin-bottom:18px;line-height:1.9;">
+                    <strong>编制依据：</strong>《欣正智慧党建（深圳）中心基地项目可行性研究报告》、国家《"十四五"数字经济发展规划》、《党史学习教育工作条例》<br>
+                    <strong>核心议题：</strong>依托深圳"双区"叠加优势与国家级智慧党建阵地，破解基层培训痛点，提升干部队伍数字化治理能力与改革开放前沿视野
+                </div>
+
+                <div class="report-h1">第一章 总论：为何必须"向南看"</div>
+                <p>当前，全党正全面推进党史学习教育常态化与数字中国建设。粤港澳大湾区作为中国特色社会主义先行示范区，其党建创新、基层治理与数字化赋能经验具有全国标杆意义。</p>
+
+                <div class="report-h1">二、核心资源壁垒：为何选择"欣正"</div>
+                <div class="report-h2">1. 顶级权威背书，规避内容合规风险</div>
+                <ul>
+                    <li><strong>独家授权：</strong>拥有国家行政学院、欣正实业总公司广东区域独家授权，是粤港澳大湾区唯一官方认证"欣正智慧党建"落地平台，课程内容由中央党校同步更新（1000+集权威党课），确保政治方向与理论高度。</li>
+                    <li><strong>智库支撑：</strong>依托中央党校、中组部党建研究所专家团队，解决地方培训"师资力量弱、理论解读浅"的痛点。</li>
+                </ul>
+                <div class="report-h2">2. 全闭环硬件规模，适配大规模封闭培训</div>
+                <p>具备目前大湾区最完整的培训物理载体，可一次性解决外地市"吃住行学"一体化需求：</p>
+                <ul>
+                    <li><strong>住宿：</strong>1500间25㎡独立卫浴三星级标准客房，满足地级市成建制（百人至千人）封闭培训。</li>
+                    <li><strong>教学：</strong>6000㎡教学楼+大型报告厅+VR/AR沉浸式党史馆、国防厅、应急厅（四大展厅）。</li>
+                    <li><strong>配套：</strong>37500㎡住宿楼+千人食堂+文体中心，避免地方培训"散乱弱、频繁转场"的效率损耗。</li>
+                </ul>
+                <div class="report-h2">3. 智慧化差异化体验，颠覆传统说教</div>
+                <p>搭载VR重走长征路、AR入党誓词、AI党建交互、大数据学员管理系统，将深圳改革开放史、基层治理案例（如福田"三治融合"、前海模式）转化为沉浸式课程，契合年轻党员与数字化时代学习习惯。</p>
+
+                <div class="report-h1">三、可行性论证：外地市组织的实操逻辑</div>
+                <div class="report-h2">1. 区位与交通可行性（1小时党建圈）</div>
+                <ul>
+                    <li>福田高铁站14分钟达香港西九龙，30分钟通达广州南，1小时覆盖大湾区。对于华南、华中地市，高铁往返均在半日内；对于全国地市，深圳宝安机场直飞通达性强。基地位于福田政务核心区，便于联动深圳市党群服务中心、前海、莲花山等现场教学点。</li>
+                </ul>
+                <div class="report-h2">2. 经济与成本可行性（零资产投入，高性价比）</div>
+                <ul>
+                    <li>对派出地市而言：无需财政出资建设同类巨型基地（自建需3.5亿-5亿元），仅需支付标准化培训费（参考：3天标准班1980元/人含食宿学），无固定资产沉淀压力。</li>
+                    <li>模式优势：由企业全额带资、政府（福田）零出资零风险运营，市场化程度高、服务标准化，比地方党校外包培训更具成本管控与接待弹性。</li>
+                </ul>
+                <div class="report-highlight">?? 标准班定价：3天2夜 · 1980元/人 · 含食宿学全闭环</div>
+                <div class="report-h2">3. 市场与需求可行性（刚需填补）</div>
+                <ul>
+                    <li>当前外地市培训普遍存在"阵地分散、无数字化、无住宿闭环、案例陈旧"问题。年设计承接党员培训20万人次、研学5万人次，目前主要服务大湾区300万党员，溢出空间大，具备接纳外地市成批次（春秋季学期制）入驻的产能冗余。</li>
+                </ul>
+
+                <div class="report-h1">四、战略价值：对派出地市的政治与治理回报</div>
+                <div class="report-h2">1. 政治价值：对标最高标准</div>
+                <p>干部在中央党校内容授权的阵地受训，直接接触国家级党建理论与深圳"党建+科技+治理"前沿实践，有助于把"湾区经验"转化为"本地解法"，响应"向深圳学习"的区域协作趋势（如中山-深圳、博罗-福田干部共训模式）。</p>
+                <div class="report-h2">2. 能力价值：数字化与改革思维双提升</div>
+                <ul>
+                    <li><strong>智慧党建实操：</strong>干部亲自体验VR/AR、大数据管理平台，返回本地后可推动本地党建数字化升级。</li>
+                    <li><strong>改革开放现场教学：</strong>基地联动深圳改革创新地标，强化干部"先行先试"意识，破解内陆思维僵化。</li>
+                </ul>
+                <div class="report-h2">3. 社会效益：低成本完成硬性考核</div>
+                <p>《党史学习教育工作条例》对党员集中培训有硬性时长考核。依托该基地一站式闭环，可高效完成年度培训指标，且深圳作为改革开放窗口，培训档案、证书含金量高，易受上级巡察与考核认可。</p>
+
+                <div class="report-h1">五、风险防控与权益保障</div>
+                <ul>
+                    <li><strong>政策与产权风险低：</strong>契合国家红色教育阵地政策；产权归属福田政府，央企/国企背景运营，无民营跑路风险。</li>
+                    <li><strong>质量保障：</strong>培训服务有标准化SOP与专家智库兜底。</li>
+                    <li><strong>防疫与安全：</strong>1500间客房独立管理，封闭式培训利于纪律管控与安全溯源。</li>
+                </ul>
+
+                <div class="report-h1">六、结论与建议</div>
+                <ul>
+                    <li><strong>建立对口协作机制：</strong>建议各市组织部/党校与党建中心签署《跨区域党员干部培训战略合作协议》，锁定年度班次（如每年2-4批，每批100-200人）。</li>
+                    <li><strong>定制化课程开发：</strong>结合派出地市产业特点（如资源型城市转型、县域治理），可依托智库开发"深圳经验+X地实践"定制课，避免"上下一般粗"。</li>
+                    <li><strong>试点先行：</strong>建议先选派组织部副部长、党校骨干教师、优秀年轻干部组成首期"深圳特训营"入基地体验，形成示范效应后再全面铺开。</li>
+                </ul>
+
+                <div class="report-conclusion">
+                    在全面从严治党与数字化变革交织的当下，谁率先用足用好深圳这一"国家级智慧党建实战操场"，谁就在下一轮干部能力储备与治理现代化竞争中占得先机。
+                </div>
             </div>
-            <div class="section-title">📝 研学留言板</div>
+        </div>
+
+        <!-- ============ 留言板页面 ============ -->
+        <div id="page8" class="page">
+            <div class="back-wrap"><button class="back-btn" onclick="backHome()">← 返回首页</button></div>
+            <div class="section-title">?? 研学留言板</div>
             <div class="msg-board">
                 <div class="msg-form">
                     <input id="msgName" type="text" placeholder="您的昵称（选填，默认匿名）" maxlength="20">
-                    <textarea id="msgContent" placeholder="写下您对研学路线的心得、建议或感想…" rows="4"></textarea>
+                    <textarea id="msgContent" placeholder="写下您对研学路线的心得、建议、报价咨询或感想…" rows="4"></textarea>
                     <button class="msg-submit" onclick="submitMsg()">发布留言</button>
                 </div>
                 <div class="msg-list" id="msgList"></div>
+                <div class="msg-counter" id="msgCounter"></div>
             </div>
         </div>
     </div>
 
-    <!-- 页脚（党建官网/电视台底部版权栏） -->
     <footer>
         <p>深圳红色党建研学平台 | 红色教育研学线路展示</p>
-        <p style="margin-top:6px;">本网站为课程作业演示网站</p>
+        <p style="margin-top:6px;">标准班：3天2夜 1980元/人 含食宿学 | 本网站为课程作业演示网站</p>
     </footer>
 
 <script>
     function showPage(num){
         document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
         document.getElementById('page'+num).classList.add('active');
-        setNav(num === 8 ? 'msg' : 'home');
+        if(num === 8) setNav('msg');
+        else if(num === 9) setNav('report');
+        else setNav('home');
+        window.scrollTo({top:0, behavior:'smooth'});
     }
     function backHome(){
         document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
         document.getElementById('home').classList.add('active');
         setNav('home');
+        window.scrollTo({top:0, behavior:'smooth'});
     }
-    // 顶部导航状态切换
     function setNav(which){
         document.getElementById('navHome').classList.toggle('nav-active', which === 'home');
+        document.getElementById('navReport').classList.toggle('nav-active', which === 'report');
         document.getElementById('navMsg').classList.toggle('nav-active', which === 'msg');
     }
     function goHome(){ backHome(); }
     function goMsg(){ showPage(8); }
-    //搜索功能JS
+    function goReport(){ showPage(9); }
+
+    //搜索功能
     const searchInput = document.getElementById('searchInput');
-    const routeCards = document.querySelectorAll('.route-card');
+    const routeCards = document.querySelectorAll('#routeList .route-card');
     const emptyTip = document.getElementById('emptyTip');
     searchInput.addEventListener('input',function(){
         let keyword = this.value.trim().toLowerCase();
@@ -918,30 +1595,26 @@ img{
                 card.style.display = "none";
             }
         })
-        if(count === 0){
-            emptyTip.style.display = "block";
-        }else{
-            emptyTip.style.display = "none";
-        }
+        emptyTip.style.display = count === 0 ? "block" : "none";
     })
-    // ===== 留言板功能（localStorage 持久化） =====
+
+    // ===== 留言板功能（localStorage 持久化保存） =====
     function escapeHtml(str){
         return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
     function loadMsgs(){
-        try{
-            return JSON.parse(localStorage.getItem('msgBoard') || '[]');
-        }catch(e){
-            return [];
-        }
+        try{ return JSON.parse(localStorage.getItem('msgBoard') || '[]'); }
+        catch(e){ return []; }
     }
     function saveMsgs(msgs){
         localStorage.setItem('msgBoard', JSON.stringify(msgs));
     }
     function renderMsgs(){
         const list = document.getElementById('msgList');
+        const counter = document.getElementById('msgCounter');
         if(!list) return;
         const msgs = loadMsgs();
+        counter.textContent = msgs.length > 0 ? `共 ${msgs.length} 条留言` : '';
         if(msgs.length === 0){
             list.innerHTML = '<div class="msg-empty">还没有留言，快来发表第一条吧</div>';
             return;
@@ -975,86 +1648,76 @@ img{
         contentInput.value = '';
         nameInput.value = '';
         renderMsgs();
+        alert('留言发布成功！已保存在本地。');
     }
     function delMsg(i){
+        if(!confirm('确定删除这条留言吗？')) return;
         const msgs = loadMsgs();
         msgs.splice(i, 1);
         saveMsgs(msgs);
         renderMsgs();
     }
-    // 页面加载时渲染留言
     renderMsgs();
-</script>
-<!-- 图片点击放大弹窗JS -->
-<script>
-// 获取弹窗元素
-const modal = document.createElement('div');
-modal.className = "img-modal";
-modal.innerHTML = `
-    <span class="img-close">&times;</span>
-    <div class="modal-controls">
-        <button class="ctl-btn" onclick="zoomImg(-1)">缩小</button>
-        <button class="ctl-btn" onclick="zoomImg(1)">放大</button>
-        <button class="ctl-btn" onclick="resetZoom()">原始大小</button>
-        <button class="ctl-btn" id="enhanceBtn" onclick="toggleEnhance()">清晰增强</button>
-    </div>
-    <img src="" id="modal-img">
-`;
-document.body.appendChild(modal);
-const modalImg = document.getElementById("modal-img");
-const closeBtn = document.querySelector(".img-close");
 
-// ===== 图片清晰化与缩放控制 =====
-let imgScale = 1;
-let enhanceOn = false;
+    // ===== 图片放大弹窗 =====
+    const modal = document.createElement('div');
+    modal.className = "img-modal";
+    modal.innerHTML = `
+        <span class="img-close">&times;</span>
+        <div class="modal-controls">
+            <button class="ctl-btn" onclick="zoomImg(-1)">缩小</button>
+            <button class="ctl-btn" onclick="zoomImg(1)">放大</button>
+            <button class="ctl-btn" onclick="resetZoom()">原始大小</button>
+            <button class="ctl-btn" id="enhanceBtn" onclick="toggleEnhance()">清晰增强</button>
+        </div>
+        <img src="" id="modal-img">
+    `;
+    document.body.appendChild(modal);
+    const modalImg = document.getElementById("modal-img");
+    const closeBtn = document.querySelector(".img-close");
 
-function zoomImg(dir){
-    imgScale = Math.min(3, Math.max(1, imgScale + dir * 0.25));
-    modalImg.style.transform = 'scale(' + imgScale + ')';
-}
-function resetZoom(){
-    imgScale = 1;
-    modalImg.style.transform = 'scale(1)';
-}
-function toggleEnhance(){
-    enhanceOn = !enhanceOn;
-    modalImg.classList.toggle('enhanced', enhanceOn);
-    const btn = document.getElementById('enhanceBtn');
-    btn.classList.toggle('active', enhanceOn);
-    btn.textContent = enhanceOn ? '清晰增强(开)' : '清晰增强';
-}
-function closeModal(){
-    modal.classList.remove("active");
-    resetZoom();
-    if(enhanceOn){
-        enhanceOn = false;
-        modalImg.classList.remove('enhanced');
+    let imgScale = 1;
+    let enhanceOn = false;
+    function zoomImg(dir){
+        imgScale = Math.min(3, Math.max(1, imgScale + dir * 0.25));
+        modalImg.style.transform = 'scale(' + imgScale + ')';
+    }
+    function resetZoom(){
+        imgScale = 1;
+        modalImg.style.transform = 'scale(1)';
+    }
+    function toggleEnhance(){
+        enhanceOn = !enhanceOn;
+        modalImg.classList.toggle('enhanced', enhanceOn);
         const btn = document.getElementById('enhanceBtn');
-        btn.classList.remove('active');
-        btn.textContent = '清晰增强';
+        btn.classList.toggle('active', enhanceOn);
+        btn.textContent = enhanceOn ? '清晰增强(开)' : '清晰增强';
     }
-}
-
-// 鼠标滚轮缩放图片
-modal.addEventListener('wheel', function(e){
-    e.preventDefault();
-    zoomImg(e.deltaY < 0 ? 1 : -1);
-}, {passive: false});
-
-// 给所有点位图片添加点击事件
-document.querySelectorAll(".point-img img").forEach(img=>{
-    img.style.cursor = "pointer"; //鼠标移上去变成小手，提示可点击
-    img.onclick = function(){
-        modalImg.src = this.src;
+    function closeModal(){
+        modal.classList.remove("active");
         resetZoom();
-        modal.classList.add("active");
+        if(enhanceOn){
+            enhanceOn = false;
+            modalImg.classList.remove('enhanced');
+            const btn = document.getElementById('enhanceBtn');
+            btn.classList.remove('active');
+            btn.textContent = '清晰增强';
+        }
     }
-})
-//关闭弹窗
-closeBtn.onclick = closeModal;
-modal.onclick = function(e){
-    if(e.target === modal) closeModal();
-}
+    modal.addEventListener('wheel', function(e){
+        e.preventDefault();
+        zoomImg(e.deltaY < 0 ? 1 : -1);
+    }, {passive: false});
+    document.querySelectorAll(".point-img img").forEach(img=>{
+        img.style.cursor = "pointer";
+        img.onclick = function(){
+            modalImg.src = this.src;
+            resetZoom();
+            modal.classList.add("active");
+        }
+    })
+    closeBtn.onclick = closeModal;
+    modal.onclick = function(e){ if(e.target === modal) closeModal(); }
 </script>
 </body>
 </html>
