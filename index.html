@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>深圳红色党建研学平台</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23a8071a'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='white'%3E%E7%A0%94%3C/text%3E%3C/svg%3E">
     <style>
         * {
     margin: 0;
@@ -31,6 +32,31 @@ body {
 .top-nav p{
     font-size:13px;
     opacity:0.85;
+}
+/* 顶部导航菜单 */
+.nav-menu{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-top:12px;
+}
+.nav-btn{
+    background:rgba(255,255,255,0.14);
+    color:#fff;
+    border:1px solid rgba(255,255,255,0.35);
+    padding:6px 22px;
+    border-radius:20px;
+    font-size:14px;
+    cursor:pointer;
+    transition:0.2s;
+}
+.nav-btn:hover{
+    background:rgba(255,255,255,0.28);
+}
+.nav-btn.nav-active{
+    background:#fff;
+    color:#a8071a;
+    font-weight:bold;
 }
 /* 首页Banner */
 .banner{
@@ -70,7 +96,7 @@ body {
     padding:12px 16px;
     border:1px solid #ddd;
     border-radius:8px;
-    font-size:15px;
+    font-size:16px;
 }
 .no-tip{
     text-align:center;
@@ -213,6 +239,102 @@ footer{
     font-size:13px;
     margin-top:30px;
 }
+/* ========== 留言板 ========== */
+.msg-board{
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.09);
+    padding:18px;
+    margin-bottom:20px;
+}
+.msg-form{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    padding-bottom:16px;
+    border-bottom:1px dashed #e3d9d9;
+}
+.msg-form input,
+.msg-form textarea{
+    width:100%;
+    padding:11px 14px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font-size:16px;
+    font-family:inherit;
+    resize:vertical;
+}
+.msg-form input:focus,
+.msg-form textarea:focus{
+    outline:none;
+    border-color:#a8071a;
+}
+.msg-form .msg-submit{
+    align-self:flex-end;
+    background:#a8071a;
+    color:#fff;
+    border:none;
+    padding:9px 26px;
+    border-radius:6px;
+    font-size:14px;
+    cursor:pointer;
+    transition:0.2s;
+}
+.msg-form .msg-submit:hover{
+    background:#8c0615;
+}
+.msg-list{
+    margin-top:6px;
+}
+.msg-empty{
+    text-align:center;
+    color:#999;
+    font-size:14px;
+    padding:26px 0;
+}
+.msg-item{
+    padding:14px 2px;
+    border-bottom:1px solid #f0e8e8;
+    position:relative;
+}
+.msg-item:last-child{
+    border-bottom:none;
+}
+.msg-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:6px;
+}
+.msg-name{
+    font-weight:bold;
+    color:#a8071a;
+    font-size:14px;
+}
+.msg-time{
+    font-size:12px;
+    color:#999;
+}
+.msg-text{
+    font-size:14px;
+    color:#444;
+    line-height:1.7;
+    word-break:break-word;
+}
+.msg-del{
+    position:absolute;
+    right:2px;
+    top:14px;
+    background:none;
+    border:none;
+    color:#bbb;
+    font-size:12px;
+    cursor:pointer;
+    padding:2px 6px;
+}
+.msg-del:hover{
+    color:#a8071a;
+}
 /* 图片放大弹窗样式 */
 .img-modal {
     display: none;
@@ -229,10 +351,50 @@ footer{
 .img-modal.active {
     display: flex;
 }
+.modal-controls{
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 1001;
+    background: rgba(0,0,0,0.55);
+    padding: 8px 14px;
+    border-radius: 30px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+.ctl-btn{
+    background:#fff;
+    color:#333;
+    border:none;
+    padding:6px 16px;
+    border-radius:20px;
+    font-size:14px;
+    cursor:pointer;
+    transition:0.2s;
+    white-space:nowrap;
+}
+.ctl-btn:hover{
+    background:#f0e6e6;
+}
+.ctl-btn.active{
+    background:#a8071a;
+    color:#fff;
+}
 .img-modal img{
     max-width: 90%;
     max-height: 90%;
     border-radius: 6px;
+    transition: transform .2s ease;
+    transform-origin: center center;
+}
+/* 清晰增强效果：提高清晰锐利度 */
+.img-modal img.enhanced{
+    filter: contrast(1.14) saturate(1.25) brightness(1.02);
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 .img-close{
     position: absolute;
@@ -278,6 +440,10 @@ img{
     <div class="top-nav">
         <h1>深圳红色党建研学平台</h1>
         <p>赓续红色血脉 传承特区精神</p>
+        <div class="nav-menu">
+            <button class="nav-btn nav-active" id="navHome" onclick="goHome()">首页</button>
+            <button class="nav-btn" id="navMsg" onclick="goMsg()">留言板</button>
+        </div>
     </div>
 
     <!-- 首页Banner（携程大图宣传风格） -->
@@ -694,6 +860,22 @@ img{
                 <strong>学习重点：</strong>创新精神、时代使命、青年担当</p>
             </div>
         </div>
+
+        <!--留言板页面-->
+        <div id="page8" class="page">
+            <div class="back-wrap">
+                <button class="back-btn" onclick="backHome()">← 返回首页</button>
+            </div>
+            <div class="section-title">📝 研学留言板</div>
+            <div class="msg-board">
+                <div class="msg-form">
+                    <input id="msgName" type="text" placeholder="您的昵称（选填，默认匿名）" maxlength="20">
+                    <textarea id="msgContent" placeholder="写下您对研学路线的心得、建议或感想…" rows="4"></textarea>
+                    <button class="msg-submit" onclick="submitMsg()">发布留言</button>
+                </div>
+                <div class="msg-list" id="msgList"></div>
+            </div>
+        </div>
     </div>
 
     <!-- 页脚（党建官网/电视台底部版权栏） -->
@@ -706,11 +888,20 @@ img{
     function showPage(num){
         document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
         document.getElementById('page'+num).classList.add('active');
+        setNav(num === 8 ? 'msg' : 'home');
     }
     function backHome(){
         document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
         document.getElementById('home').classList.add('active');
+        setNav('home');
     }
+    // 顶部导航状态切换
+    function setNav(which){
+        document.getElementById('navHome').classList.toggle('nav-active', which === 'home');
+        document.getElementById('navMsg').classList.toggle('nav-active', which === 'msg');
+    }
+    function goHome(){ backHome(); }
+    function goMsg(){ showPage(8); }
     //搜索功能JS
     const searchInput = document.getElementById('searchInput');
     const routeCards = document.querySelectorAll('.route-card');
@@ -733,6 +924,66 @@ img{
             emptyTip.style.display = "none";
         }
     })
+    // ===== 留言板功能（localStorage 持久化） =====
+    function escapeHtml(str){
+        return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+    function loadMsgs(){
+        try{
+            return JSON.parse(localStorage.getItem('msgBoard') || '[]');
+        }catch(e){
+            return [];
+        }
+    }
+    function saveMsgs(msgs){
+        localStorage.setItem('msgBoard', JSON.stringify(msgs));
+    }
+    function renderMsgs(){
+        const list = document.getElementById('msgList');
+        if(!list) return;
+        const msgs = loadMsgs();
+        if(msgs.length === 0){
+            list.innerHTML = '<div class="msg-empty">还没有留言，快来发表第一条吧</div>';
+            return;
+        }
+        list.innerHTML = msgs.map((m, i)=>`
+            <div class="msg-item">
+                <div class="msg-head">
+                    <span class="msg-name">${escapeHtml(m.name || '匿名')}</span>
+                    <span class="msg-time">${escapeHtml(m.time || '')}</span>
+                </div>
+                <div class="msg-text">${escapeHtml(m.text)}</div>
+                <button class="msg-del" onclick="delMsg(${i})">删除</button>
+            </div>
+        `).join('');
+    }
+    function submitMsg(){
+        const nameInput = document.getElementById('msgName');
+        const contentInput = document.getElementById('msgContent');
+        const text = contentInput.value.trim();
+        if(!text){
+            alert('请先填写留言内容');
+            return;
+        }
+        const msgs = loadMsgs();
+        msgs.unshift({
+            name: nameInput.value.trim() || '匿名',
+            text: text,
+            time: new Date().toLocaleString('zh-CN', {hour12:false})
+        });
+        saveMsgs(msgs);
+        contentInput.value = '';
+        nameInput.value = '';
+        renderMsgs();
+    }
+    function delMsg(i){
+        const msgs = loadMsgs();
+        msgs.splice(i, 1);
+        saveMsgs(msgs);
+        renderMsgs();
+    }
+    // 页面加载时渲染留言
+    renderMsgs();
 </script>
 <!-- 图片点击放大弹窗JS -->
 <script>
@@ -741,24 +992,65 @@ const modal = document.createElement('div');
 modal.className = "img-modal";
 modal.innerHTML = `
     <span class="img-close">&times;</span>
+    <div class="modal-controls">
+        <button class="ctl-btn" onclick="zoomImg(-1)">缩小</button>
+        <button class="ctl-btn" onclick="zoomImg(1)">放大</button>
+        <button class="ctl-btn" onclick="resetZoom()">原始大小</button>
+        <button class="ctl-btn" id="enhanceBtn" onclick="toggleEnhance()">清晰增强</button>
+    </div>
     <img src="" id="modal-img">
 `;
 document.body.appendChild(modal);
 const modalImg = document.getElementById("modal-img");
 const closeBtn = document.querySelector(".img-close");
 
+// ===== 图片清晰化与缩放控制 =====
+let imgScale = 1;
+let enhanceOn = false;
+
+function zoomImg(dir){
+    imgScale = Math.min(3, Math.max(1, imgScale + dir * 0.25));
+    modalImg.style.transform = 'scale(' + imgScale + ')';
+}
+function resetZoom(){
+    imgScale = 1;
+    modalImg.style.transform = 'scale(1)';
+}
+function toggleEnhance(){
+    enhanceOn = !enhanceOn;
+    modalImg.classList.toggle('enhanced', enhanceOn);
+    const btn = document.getElementById('enhanceBtn');
+    btn.classList.toggle('active', enhanceOn);
+    btn.textContent = enhanceOn ? '清晰增强(开)' : '清晰增强';
+}
+function closeModal(){
+    modal.classList.remove("active");
+    resetZoom();
+    if(enhanceOn){
+        enhanceOn = false;
+        modalImg.classList.remove('enhanced');
+        const btn = document.getElementById('enhanceBtn');
+        btn.classList.remove('active');
+        btn.textContent = '清晰增强';
+    }
+}
+
+// 鼠标滚轮缩放图片
+modal.addEventListener('wheel', function(e){
+    e.preventDefault();
+    zoomImg(e.deltaY < 0 ? 1 : -1);
+}, {passive: false});
+
 // 给所有点位图片添加点击事件
 document.querySelectorAll(".point-img img").forEach(img=>{
     img.style.cursor = "pointer"; //鼠标移上去变成小手，提示可点击
     img.onclick = function(){
         modalImg.src = this.src;
+        resetZoom();
         modal.classList.add("active");
     }
 })
 //关闭弹窗
-function closeModal(){
-    modal.classList.remove("active");
-}
 closeBtn.onclick = closeModal;
 modal.onclick = function(e){
     if(e.target === modal) closeModal();
